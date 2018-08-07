@@ -1,0 +1,62 @@
+In this chapter we provide a few ``random'' facts, theorems and arguments that are not paramount to this thesis, but help it along.
+
+\section{Some Theorems}\label{sec:apptheorems}
+\begin{theorem}\label{th:actionexist}
+Let $X\subseteq\mathbb{R}^n$ be open, and $\alpha, \beta \in\mathbb{R}_+$ with $\alpha < \beta$. If $L:[\alpha,\beta]\times X\times \mathbb{R}^n\to\mathbb{R}$ is continuously differentiable, then the integral
+\begin{equation}
+S[x(t)]\coloneqq\int_\alpha^\beta L(t, x(t), \dot{x}(t))\dd{t}
+\end{equation}
+exists for all $x\in\mathrm{C}^1([\alpha,\beta],X)$.
+\end{theorem}
+This theorem justifies calling $\mathrm{C}^1(\mathbb{R})$ the domain of the action as we did in Section \ref{sec:stationary}. The next theorem is a slightly more rigorous justification as to when the Euler-Lagrange equations \ref{eq:eulerlag} hold.
+\begin{theorem}
+If $x\in\mathrm{C}^1([\alpha,\beta],X)$ is a local extremum of $S$ as defined above, and moreover the function
+\begin{equation}
+[\alpha,\beta]\ni t\mapsto \pdv{\dot{x}}L(t, x(t),\dot{x}(t))
+\end{equation}
+is continuously differentiable, then the following equation holds.
+\begin{equation}
+\pdv{x}L(t, x(t),\dot{x}(t)) = \dv{t}\pdv{\dot{x}}L(t, x(t),\dot{x}(t))
+\end{equation}
+\end{theorem}
+
+\begin{theorem}[Poincar\'{e} Inequality]
+Let $p\in[1,\infty)$ and $\Omega$ a bounded subset of $\mathbb{R}$. Then there exists a constant $C$, dependent on $\Omega$ and $p$, so that for every function $u\in W^{1,2}(\Omega)$ we have the following inequality.
+\begin{equation}
+\|u\|_{L^p(\Omega)} \leq C\|u'\|_{L^p(\Omega)}
+\end{equation}
+\end{theorem}
+
+
+\section{Some Arguments}\label{sec:appargs}
+In this section we recreate, with more detail, the original arguments for the existence of Q-Balls as proposed in \cite{coleman}. We 
+
+As Q-Balls were proposed in \cite{coleman} these objects are described by a field $\phi$ that is some constant value inside a volume $B$, and 0 outside. There exact energy is given by (\ref{eq:nospinenergy}), and in this approximation reduces to
+\begin{equation}\label{eq:Eapprox}
+E = \frac{1}{2}\omega^2\phi^2B + VB
+\end{equation}
+and similarly for the Noether Charge (\ref{eq:nospincharge}) we have the following.
+\begin{equation}\label{eq:Qapprox}
+Q = \omega \phi^2 B
+\end{equation}
+The fundamental idea of a Q-Ball is that it's energy configuration is lower than that of the separate particles, and hence we should minimize the energy for a given value of the charge $Q$. In order to do this we eliminate $\omega$ by inserting (\ref{eq:Qapprox}) into (\ref{eq:Eapprox}) to obtain
+\begin{equation}
+E = \frac{1}{2}\frac{Q^2}{\phi^2 B} + VB.
+\end{equation}
+Now we minimize this with respect to the volume $B$ to find it is minimized when
+\begin{equation}
+B = \frac{Q}{\sqrt{2\phi^2 V}}.
+\end{equation}
+With this volume the energy then reads
+\begin{align}
+E & = \frac{1}{2}\frac{Q^2}{\phi^2}\frac{\sqrt{2\phi^2 V}}{Q} + \frac{VQ}{\sqrt{2\phi^2 V}} \\
+ & = Q\sqrt{2\phi^2 V}\left( \frac{1}{2\phi^2} + \frac{V}{2\phi^2 V}\right) \\
+ & = Q \sqrt{\frac{2V}{\phi^2}}.
+\end{align}
+The last step is then to minimize this value with respect to $\phi$ in order to obtain
+\begin{equation}
+E = \min_\phi Q \sqrt{\frac{2V}{\phi^2}}
+\end{equation}
+which is where the restriction on $\omega$ comes from as seen in (\ref{eq:omegabounds}). The upper bound for $\omega$ arises from considering the qualitative shape of the potential, and a more detailed description of its derivation can be found in \cite{coleman, qball6}.
+
+This construction of Q-Balls allows the energy configuration of the ``Q-matter'' as Coleman calls it to be lower than that of the separate particles floating around in space.

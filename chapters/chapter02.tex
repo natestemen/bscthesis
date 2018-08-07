@@ -1,0 +1,390 @@
+
+In order to seriously discuss our problem at hand, we must first have a rudimentary understanding of some aspects of field theory, and more specifically Gauge theory and Noether's Theorem. We will develop the needed machinery starting from a basic understanding of classical mechanics, and the principle of least action.
+
+\section{The Principle of Stationary Action}\label{sec:stationary}
+As review, the equations of motion for a finite system of particles is given by minimizing the action of classical mechanics given by
+\begin{equation}\label{eq:action}
+S = \int L\dd{t}
+\end{equation}
+where the integral is taken over the path from the initial state of the system, to the final state of the system and $L$ is the Lagrangian of the given system. More precisely, the action $S$ has domain $\mathrm{C}^1(\mathbb{R})$\footnote{It is risky business to satisfy this domain as oftentimes is the case that in application it is disregarded and new spaces are taken as domains. However here we specify $\mathrm{C}^1(\mathbb{R})$ because of Theorem \ref{th:actionexist} given in Appendix \ref{chap:appendix}.} and range $\mathbb{R}$ and hence $S:\mathrm{C}^1(\mathbb{R})\to \mathbb{R}$ is a functional and should, more formally, be written
+\begin{equation}\label{eq:actionFunc}
+S\left[x(t)\right] = \int L(x(t), \dot{x}(t), t)\dd{t}.
+\end{equation}
+Suppose we are given the true path $x_\mathrm{true}(t)$ the particle takes from time $t_1$ to $t_2$. The Principle of Stationary Action tells us that when we infinitesimally vary the path the action should not change to first order \cite{feynman}. Symbolically this is written $\delta S = 0$. One may show, with use of the Calculus of Variations, that if $x(t)$ minimizes (or makes stationary) an action, then it must equivalently also satisfy the following Euler-Lagrange equation.
+\begin{equation}\label{eq:eulerlag}
+\pdv{L}{x} = \dv{t} \pdv{L}{\dot{x}}
+\end{equation}
+This is an extremely important result, as it gives us a differential equation, or equation of motion, from the abstract principle. This is helpful in many way, in particular when one wants to generalize the system in which one is discussing where writing down an equation of motion is oftentimes very difficult or impossible.
+
+\subsection{Noether's Theorem}\label{noethers}
+Let our system be parametrized by coordinates $q_i$ with corresponding velocities $\dot{q}_i$ with $i\in\{1,2,\ldots,n\}$. We say $F(q_i, \dot{q}_i, t)$ is a \textit{conserved quantity}, or \textit{constant of motion} if it's total time derivative vanishes, i.e.,
+\begin{equation}\label{eq:constantmotion}
+\dv{F}{t} = \pdv{F}{t} + \sum_{i = 1}^n \pdv{F}{q_i}\dv{q_i}{t} + \pdv{F}{\dot{q}_i}\dv{\dot{q}_i}{t} = 0
+\end{equation}
+where $q_i(t)$ is taken along a path satisfying (\ref{eq:eulerlag}). This is to say the value of $F$ does not change as we evolve our system in time.
+
+Now suppose we have a one parameter family of maps
+\begin{equation}
+q_i(t)\to Q_i(t, s)\qquad s\in\mathbb{R}
+\end{equation}
+such that $Q_i(t, 0) = q_i(t)$. This transformation is said to be a \textit{symmetry} of the Lagrangian $L$ if
+\begin{equation}\label{eq:symmetry}
+\pdv{s}L(Q_i(t,s), \dot{Q}_i(t,s),t) = 0
+\end{equation}
+
+\begin{theorem}[Noether's Theorem]\label{noetherian}
+For each such symmetry transformation as defined in in (\ref{eq:symmetry}), there exists a corresponding conserved quantity.
+\end{theorem}
+\begin{proof}
+Expanding the symmetry definition (\ref{eq:symmetry}) we have
+\begin{equation}
+\pdv{L}{s} = \pdv{L}{Q_i}\pdv{Q_i}{s} + \pdv{L}{\dot{Q}_i}\pdv{\dot{Q}_i}{s} = 0
+\end{equation}
+This holds for all $s$, and in particular $s = 0$. Thus, using the fact that $Q_i(t,0) = q_i(t)$, we have
+\begin{align}
+0 = \left.\pdv{L}{s}\right|_{s = 0} & = \left.\pdv{L}{q_i}\pdv{Q_i}{s}\right|_{s = 0} + \left.\pdv{L}{\dot{q}_i}\pdv{ \dot{Q}_i}{s}\right|_{s = 0} \\
+ & = \left.\dv{t}\left(\pdv{L}{\dot{q}_i}\right)\pdv{Q_i}{s}\right|_{s = 0} + \left.\pdv{L}{\dot{q}_i}\pdv{\dot{Q}_i}{s}\right|_{s = 0} \\
+ & = \dv{t}\left.\left(\pdv{L}{\dot{q}_i}\pdv{Q_i}{s}\right|_{s = 0}\right)
+\end{align}
+Since this is true for all $i$, and by linearity of the time derivative we have conservation of $\sum_{i = 1}^n \pdv{L}{\dot{q}_i}\pdv{Q_i}{s} = \pdv{L}{\dot{\mathbf{q}}}\cdot\pdv{\mathbf{Q}}{s}$.
+\end{proof}
+We now see an example of this theorem in action and the true power behind Noether's ideas in terms of Classical Mechanics (later we will see a generalization of this theorem to deal with fields).
+\begin{example}\label{momcons}
+Suppose we have a system of particles described by the following Lagrangian.
+\begin{equation}
+L = \frac{1}{2}\sum_{i = 1}^n m_i\dot{\mathbf{r}}_i^2 - \sum_{j\neq i}V(\mathbf{r}_i - \mathbf{r}_j)
+\end{equation}
+Suppose we make the transformation of the coordinates $\mathbf{r}_i\to \mathbf{r}_i + s\mathbf{n}$ where $s\in\mathbb{R}$. We then immediately have $L(\mathbf{r}_i, \dot{\mathbf{r}}_i, t) = L(\mathbf{r}_i + s\mathbf{n}, \dot{\mathbf{r}}_i, t)$ because $\mathbf{n}$ does not change with time (nor space), and hence we have a conserved quantity. Noether's theorem then says
+\begin{equation}
+\sum_{i = 1}^n\pdv{L}{\dot{\mathbf{r}}_i}\cdot\mathbf{n} = 
+\sum_{i = 1}^n \mathbf{p}_i\cdot\mathbf{n} = \mathbf{P}\cdot\mathbf{n}
+\end{equation}
+where $\mathbf{P}$ is the total momentum of the system is conserved. Hence if we have homogeneity of space (that is, a potential term on dependent on the vector difference of objects), we have conservation of momentum in the direction of $\mathbf{n}$. However, the argument holds for all vectors $\mathbf{n}$ and hence we have conservation of momentum in all directions, and more simply, we have conservation of momentum.
+\end{example}
+This theorem has many important other consequences\footnote{If space is isotropic, i.e. the Lagrangian is invariant under rotations around an axis, or differently $V(|\mathbf{r}_i - \mathbf{r}_j|)$ is only a function of the magnitude of the distance between objects, then you have conservation of total angular momentum. If the Lagrangian is invariant under time shifts $t\to t + a$ (homogeneity in time) then $H = \sum_i\dot{q}_i\pdv{L}{\dot{q}_i} - L$ is conserved. This quantity is known as the Hamiltonian and is, in most systems, the total energy.} and makes proving conservation laws, the thing physicists love most, much easier. In fact it turns out, every conservation law has a corresponding symmetry, however discrete symmetries do not depend on a continuous parameter and hence transformation such as parity transformations, i.e.,  $\mathbf{r}_i\to-\mathbf{r}_i$, do not have conservation laws in classical physics.
+
+\section{Adding a Few More Particles}\label{moreParticles}
+Section \ref{sec:stationary} works great for most systems we wish to study, however there are many systems this approach does not work for. If one wishes to analyze the behavior of any continuous system, the approach outlined above fails, for there would be an infinite number of continuous variables. This, however, does not mean we cannot study these systems, but must find an alternative approach.
+
+As an example we will study an infinitely long elastic rod which can undergo small longitudinal vibrations. In order to study the system we will first use a discretized version consisting of point particles, connected by springs, and then take the continuum limit.
+
+If we use $\eta_i$ to denote particle $i$'s displacement from it's equilibrium position, then the systems kinetic energy is the sum of each particles kinetic energy.
+\begin{equation}\label{eq:kinetic}
+T = \frac{1}{2}\sum_{i\in\mathbb{Z}}m\dot{\eta}_i^2
+\end{equation}
+Here we let each particle have the same mass $m$. The potential energy is built up by summing over neighbors. In particular we take the distance in between neighbors, square and multiply by the spring constant as we know from Hooke's Law  $V_\text{spring} = \frac{1}{2}kx^2$ for a mass on a spring.
+\begin{equation}\label{eq:potentialpart}
+V = \frac{1}{2}\sum_{i\in\mathbb{Z}}k\left(\eta_{i + 1} - \eta_i\right)^2
+\end{equation}
+Combining (\ref{eq:kinetic}) and (\ref{eq:potentialpart}) we obtain
+\begin{equation}\label{eq:lagrangian}
+L = T - V = \frac{1}{2}\sum_{i\in\mathbb{Z}}\left[m\dot{\eta}_i^2 - k\left(\eta_{i + 1} - \eta_i\right)^2\right]
+\end{equation}
+If, while the system at rest, the distance between the masses is $a$, then we can write (\ref{eq:lagrangian}) as
+\begin{equation}\label{eq:lagrangianMod}
+L = \frac{1}{2}\sum_{i\in\mathbb{Z}}a\left[\frac{m}{a}\dot{\eta}_i^2 - ka\left(\frac{\eta_{i + 1} - \eta_i}{a}\right)^2\right].
+\end{equation}
+When we eventually take the continuum limit, we will need to understand what happens to this Lagrangian. The continuum limit in this system will mean taking $a\to 0$. As we do this $\frac{m}{a}$ approaches $\mu$, mass per unit length, or linear mass density. The limiting value of the coefficient $ka$ can be found by using Hooke's Law which states the extension of an elastic rod per unit length is directly proportional to the force exerted on that rod. This relation is written $F = Y\xi$ where $Y$ is the Young's Modulus and $\xi$ is the extension per unit length. The extension per unit length in the discretized system is $\xi = \frac{\eta_{i + 1} - \eta_i}{a}$ and the force required to do the extension is 
+\begin{equation}\label{eq:youngsMod}
+F = k(\eta_{i + 1} - \eta_i) = ka\left(\frac{\eta_{i + 1} - \eta_i}{a}\right) = ka\xi
+\end{equation}
+and hence $ka$ corresponds to Young's Modulus. The displacements from equilibrium $\eta_i$ will be promoted from being indexed by $\mathbb{Z}$, to being ``indexed" by $\mathbb{R}$. However, indexing by $\mathbb{R}$ corresponds to being a function of $\mathbb{R}$ and hence we write $\eta(x)$. Adding one to the index $i$ then corresponds to moving over a distance $a$ and hence
+\begin{equation}
+\frac{\eta_{i + 1} - \eta_i}{a} = \frac{\eta(x + a) - \eta(x)}{a}
+\end{equation}
+and in the limiting case $a\to 0$ this term approaches $\pdv{\eta}{x}$\footnote{The only reason its not $\dv{\eta}{x}$ is because $\eta$ depends on both time $t$ and space $x$ so partial derivatives are necessary.} and $a$ plays the role of $\dd{x}$. Hence the sum over particles, becoming an integral over $x$ and the Lagrangian reads
+\begin{equation}\label{eq:contLag}
+L = \frac{1}{2}\int_\mathbb{R}\left[\mu\left(\pdv{\eta}{t}\right)^2 - Y\left(\pdv{\eta}{x}\right)^2\right]\dd{x}.
+\end{equation}
+We note that had we considered the system in three-dimensions, we would be integrating over the independent ``indices'' $y$ and $z$ as well. In general we will be able to write the Lagrangian as an integral over all space. That is
+\begin{equation}\label{eq:lagDens}
+L = \iiint\lag\,\dd{x}\dd{y}\dd{z} = \int\lag \dd[3]{x}
+\end{equation}
+where $\lag$ is defined as the \textit{Lagrangian density} and for the elastic rod we read off the Lagrangian density to be
+\begin{equation}
+\lag = \frac{1}{2}\left[\mu\left(\pdv{\eta}{t}\right)^2 - Y\left(\pdv{\eta}{x}\right)^2\right].
+\end{equation}
+The action then reads
+\begin{equation}
+S = \iint\lag\,\dd[3]{x}\dd{t} = \int\lag\dd[4]{x}
+\end{equation}
+which treats space and time on equal footing.
+
+We treat the Lagrangian density as a function of a field and it's derivatives. In the above example $\eta$ is a field that describes, at each point, the displacement from equilibrium. The question is then, given a Lagrangian density can we formulate the equations of motion of the system purely in terms of it, and it's derivatives like we did with the Lagrangian.  
+
+\section{Euler-Lagrange Equations Revisited}
+
+\subsection{Some Notation}\label{sec:notation}
+Before we continue to develop the Euler-Lagrange equations for the action written in terms of the Lagrangian density, it will be helpful to be familiar with some notation. A flat spacetime is modeled by a modified version of $\mathbb{R}^4$ because of the seeming difference between the three space dimensions and the single time. In the physics literature this space is normally denoted $\mathbb{R}^{1,3} = \mathbb{R}\times\mathbb{R}^3$. The underlying set is simply $\mathbb{R}^4$, however the inner product, and hence metric\footnote{The inner product induces a norm, which determines the metric by $d(x,y) = \|x - y\|$.}, is altered.
+
+A point in this space (called an event) is denoted as (in units where $c = 1$) $(t, x, y, z) = (x^0, x^1, x^2, x^3) = x^\mu$ where the superscripts are indices, not powers. A simple abuse of notation will be used to allow $x^\mu$ to denote an event (vector) in our spacetime, and not just the $\mu^\text{th}$ coordinate. By convention, we will take all Greek indices $\mu, \nu, \lambda, \ldots$ to run over $\{0,1,2,3\}$ (all spacetime dimensions) and Roman indices $i, j, k, \ldots$ to run over $\{1,2,3\}$ (the spatial dimensions). We will employ the Einstein Summation Convention which states that whenever you have an expression with a repeated index both upstairs $x^\mu$ and downstairs $y_\mu$ then that index is implied to be summed over. For example,
+\begin{equation}
+\alpha_1x^1 + \alpha_2x^2 + \alpha_3x^3 = \sum_{i = 1}^3\alpha_ix^i = \alpha_ix^i
+\end{equation}
+This conventions is useful as it allows the manipulation of components without the extra baggage of a sum. A more practical example allows us to write Euclidean cross products as
+\begin{equation}
+\mathbf{u}\times\mathbf{v} = \varepsilon_{ijk}u^jv^k\mathbf{e}^i
+\end{equation}
+where $\mathbf{e}^i$ is the standard basis for $\mathbb{R}^3$, and $\varepsilon_{ijk}$ is the Levi-Civita Symbol which is defined as $+1$ if $(i, j, k)$ is an even permutation of $(1,2,3)$ and $-1$ if it is an odd permutation. Otherwise the symbol is defined to be 0.
+
+Lastly, we define the following symbols
+\begin{align}
+\label{eq:partials}
+\begin{split}
+\partial_\mu & \coloneqq\pdv{x^\mu} = \left(\pdv{t}, \nabla\right) \\
+\partial^\mu & \coloneqq\pdv{x_\mu} = \left(-\pdv{t},\nabla\right)
+\end{split}
+\end{align}
+and note that we can very easily raise and lower all indices in the expressions aforementioned by ``contracting'' with metric of the space. In the work that follows we work in a flat Minkowski spacetime with metric $\eta_{\mu\nu}$ and signature $\mathrm{diag}(-,+,+,+)$\footnote{This is just shorthand for $\mqty(\dmat[0]{-1,1,1,1})$.}. Contracting with the metric means the following.
+\begin{equation}
+x_\mu = g_{\mu\nu}x^\nu \qquad A_{\mu\nu} = g_{\mu\alpha}g_{\nu\beta}A^{\alpha\beta}
+\end{equation}
+This gives us another tool to manipulate indices, when in disguise this is really just matrix multiplication.
+\subsection{First Variation}
+We follow the same procedure as before in the derivation, by varying the action. Here, the field $\delta\varphi$ will be chosen so that it vanishes outside the region of spacetime we are considering.
+\begin{align}\label{eq:ELfirst}
+\delta S & \coloneqq S[\varphi + \delta\varphi] - S[\varphi] \nonumber\\
+ & = \int \lag(\varphi + \delta\varphi, \partial_\mu\varphi + \partial_\mu\delta\varphi) - \lag(\varphi, \partial_\mu\varphi)\dd[4]{x} \nonumber \\
+ & = \int \pdv{\lag}{\varphi}\delta\varphi + \pdv{\lag}{(\partial_\mu\varphi)}\delta{(\partial_\mu\varphi)}\dd[4]{x}
+\end{align}
+To continue we use the following fact
+\begin{equation*}
+\delta(\partial_\mu\varphi)\coloneqq (\partial_\mu\varphi)(x^\mu + \delta a^\mu) - (\partial_\mu\varphi)(x^\mu) = \partial_\mu(\varphi(x^\mu + \delta a^\mu) - \varphi(x^\mu)) = \partial_\mu(\delta\varphi)
+\end{equation*}
+to write (\ref{eq:ELfirst}) as
+\begin{equation}
+\delta S = \int \pdv{\lag}{\varphi}\delta\varphi + \pdv{\lag}{(\partial_\mu\varphi)}\partial_\mu(\delta\varphi)\dd[4]{x}.
+\end{equation}
+We then integrate by parts the second term, and because we chose $\delta\varphi$ to be 0 outside of our region of interest the boundary term goes to 0. Hence we have
+\begin{align}
+\delta S & = \int \pdv{\lag}{\varphi}\delta\varphi - \partial_\mu\pdv{\lag}{(\partial_\mu\varphi)}\delta\varphi\dd[4]{x} \nonumber\\
+ & = \int \left[\pdv{\lag}{\varphi} - \partial_\mu \pdv{\lag}{(\partial_\mu\varphi)} \right]\delta\varphi\dd[4]{x}
+\end{align}
+In order for the action to be stationary on this field, $\delta S$ must be 0 for \textit{all} fields $\delta\varphi$. This meas the bracketed term must be 0 in order for the action to be stationary.
+\begin{equation}\label{eq:ELfields}
+\pdv{\lag}{\varphi} - \partial_\mu \pdv{\lag}{(\partial_\mu\varphi)} = 0
+\end{equation}
+Hence we have arrived at the Euler-Lagrange equation for a Lagrangian density dependent on a field, and its derivatives. A slight generalization of this equation would be an Euler-Lagrange equation for a Lagrangian density dependent on multiple fields, i.e. $\lag(\varphi_i,\partial_\mu\varphi_i)$ for $i\in\mathbb{N}$. If this is the case, we can then vary the action with respect to each field, to obtain the above Euler-Lagrange equation for each independent field. That is we have 
+\begin{equation}\label{eq:ELfieldsMul}
+\pdv{\lag}{\varphi_i} - \partial_\mu \pdv{\lag}{(\partial_\mu\varphi_i)} = 0
+\end{equation}
+for each $i$. Deriving other Euler-Lagrange equations are possible, for example ones for Lagrangian densities dependent on higher derivatives, but we will not need them for our purpose.
+
+For completeness we present an alternative derivation using the functional derivative and differential.
+\begin{definition}\label{funcD}
+Given a space $X$ of functions which is closed under vector addition and scalar multiplication, we define the \textbf{functional derivative} of $F:X\to \mathbb{R}$, denoted as $\frac{\delta F}{\delta \psi}$, as
+\begin{align}
+\frac{\delta F}{\delta \psi} & \coloneqq \lim_{\varepsilon\to 0}\frac{F[\psi + \varepsilon\phi] - F[\psi]}{\varepsilon} \nonumber \\
+ & = \left.\dv{\varepsilon} F[\psi + \varepsilon\phi]\right|_{\varepsilon = 0}
+\end{align}
+where we call $\phi$ the variation of $\psi$.
+\end{definition}
+
+
+Using this new tool we can re-derive the Euler-Lagrange equations using $S$ as our functional. First we calculate the functinal derivative.
+\begin{align*}
+\fdv{S}{\varphi} & = \left.\dv{\varepsilon}\int\lag(\varphi + \varepsilon\phi, \partial_\mu\varphi + \varepsilon\partial_\mu\phi)\dd[4]{x}\right|_{\varepsilon = 0} \\
+ & = \int \pdv{\lag}{\varphi}\phi + \pdv{\lag}{(\partial_\mu\varphi)}\partial_\mu\phi\,\dd[4]{x}
+\end{align*}
+We now integrate by parts as before, and using the fact that our variation vanishes on the boundary of the region of spacetime we are considering we can write
+\begin{equation}
+\fdv{S}{\varphi} = \int \left[\pdv{\lag}{\varphi} - \partial_\mu \pdv{\lag}{(\partial_\mu\varphi)}\right]\phi\dd[4]{x}.
+\end{equation}
+Now the principal of stationary action tells us this variation of the action should be 0. If an integral is to be 0, then its integrand must be 0. The variation $\phi$ is arbitrary and in particular it is non-zero. Hence the only way for this integral to be 0 is for the bracketed term to be equal to 0 almost everywhere. We then obtain the same Euler-Lagrange equation as above for a single scalar field!
+
+\section{Aspects of Electromagnetism}
+
+Electromagnetism is fundamentally the study of the electric and magnetic fields. Mathematically these are vector fields $\mathbf{E},\mathbf{B}: \mathbb{R}^3 \to \mathbb{R}^3$ that satisfying the following equations known as Maxwell's Equations (in Lorentz-Heaviside units).
+\begin{align}
+\nabla\cdot\mathbf{E} & = \rho \label{eq:gauss}\\
+\nabla\times\mathbf{E} + \partial_t\mathbf{B} & = 0 \label{eq:faraday} \\
+\nabla\cdot\mathbf{B} & = 0 \label{eq:mono}\\
+\nabla\times\mathbf{B} - \partial_t\mathbf{E} & = \mathbf{J} \label{eq:ampere}
+\end{align}
+These four equations completely describe Electromagnetic phenomena, where $\rho$ is the charge density of the system, and $\mathbf{J}$ is the current density defined by the current per unit area. These equations describe classical Electrodynamics very well, but \cref{eq:gauss,eq:faraday,eq:mono,eq:ampere} tell a much larger story than at the surface.
+
+To begin we use the familiar theorem from multi-variable calculus that states if a vector field's divergence is 0 everywhere, then it can be written as the curl of some other vector field. The (current) in-existence of magnetic monopoles implies $\nabla \cdot \mathbf{B} = 0$ and hence we may write $\mathbf{B} = \nabla\times\mathbf{A}$.
+
+One may then ask can we do the same for the electric field? Well neither the divergence, nor the curl is 0, so it makes our job slightly more difficult. That said, taking the curl of the vector field $\mathbf{F} = \mathbf{E} + \partial_t\mathbf{A}$ yields $\nabla\times\mathbf{F} = \nabla\times\mathbf{E} + \partial_t\mathbf{B} = 0$ where the last equality is by \cref{eq:faraday}. Because the curl is 0 everywhere it can be written (using another theorem from multi-variable calculus) as the gradient of a scalar field. Rearranging, we have arrived at $\mathbf{E} = -\nabla \varphi - \partial_t \mathbf{A}$ and hence a ``potential" for $\mathbf{E}$.
+
+Writing the electric and magnetic fields in terms of these potentials decreases the amount of information needed to solve problems. This can be seen readily as $\mathbf{E}(x,y,z,t) = (E_1(x,y,z,t),E_2(x,y,z,t),E_3(x,y,z,t))$ and also with the magnetic field. That is, 6 independent functions. However in our potential reformulation we have reduced the problem to finding the scalar field $V$ as well as the three functions in the magnetic vector potential $\mathbf{A}$.
+
+With these we can rewrite Maxwell's equations in terms of the the potentials. Below are the two inhomogeneous equations whereas the two homogeneous equations are satisfied by the constructions of the potentials.
+\begin{align}
+-\nabla ^{2}\varphi - \partial_t (\nabla \cdot \mathbf{A}) & = \rho \label{eq:maxPot1} \\
+-\nabla(\partial_t\varphi + \nabla\cdot\mathbf{A}) + (-\partial_t^2 + \nabla^2)\mathbf{A} & = \mathbf{J} \label{eq:maxPot2}
+\end{align}
+These equations, along with the Lorentz force law
+\begin{align}\label{eq:lorentz}
+\mathbf{F} & = q\left(\mathbf{E} + \mathbf{v}\times\mathbf{B}\right) \nonumber\\
+ & = q\left(-\nabla\varphi - \partial_t\mathbf{A} + \nabla(\mathbf{v}\cdot\mathbf{A})\right)
+\end{align}
+allow us to construct the Lagrangian of Electrodynamics.
+\begin{equation}\label{eq:lagEM}
+L_\text{EM}(\mathbf{x}, \dot{\mathbf{x}},t) = \frac{1}{2}m\dot{\mathbf{x}}^2 - q\varphi(t,\mathbf{x}) + q\dot{\mathbf{x}}\cdot\mathbf{A}(t,\mathbf{x})
+\end{equation}
+
+
+\section{Elementary Gauge Theory}
+
+With the electric and magnetic fields written in terms of ``potential" functions
+\begin{align}
+\mathbf{E} & = -\nabla\varphi - \partial_t\mathbf{A} \label{eq:Epotential}\\
+\mathbf{B} & = \nabla\times\mathbf{A} \label{eq:Bpotential}
+\end{align}
+we might wonder about the uniqueness of such fields $\varphi$ and $\mathbf{A}$. Students of Electrodynamics know the electric potential $\varphi$ is certainly not unique as we often chose it to be 0 at locations in spacetime that are convenient for solving the problem at hand. The picture is slightly more complicated in general, however. Suppose we are given electric and magnetic fields and have gone about finding potentials for those fields. If I then come along and make the transformation
+\begin{align}
+\varphi \to \varphi' & = \varphi - \partial_t\chi \\
+\mathbf{A}\to\mathbf{A}' & = \mathbf{A} + \nabla\chi
+\end{align}
+we can see how the given electromagnetic fields change.
+\begin{align*}
+\mathbf{B}\to\mathbf{B}' & = \nabla\times\left(\mathbf{A} + \nabla\chi\right) \\
+ & = \nabla\times\mathbf{A} + \cancelto{0}{\nabla\times(\nabla\chi)} \\
+ & = \mathbf{B} \\
+\mathbf{E}\to\mathbf{E}' & = -\nabla\left(\varphi - \partial_t\chi\right) - \partial_t\left(\mathbf{A} + \nabla\chi\right) \\
+ & = -\nabla\varphi + \partial_t\nabla\chi - \partial_t\mathbf{A} - \partial_t\nabla\chi \\
+  & = \mathbf{E}
+\end{align*}
+Surprisingly the electromagnetic fields are completely unchanged by these transformations for any given (differentiable) function $\chi(t,\mathbf{x})$. This ambiguity in the potentials describing the physical fields provide us with a way to simplify calculations. Suppose you are having trouble solving $\ref{eq:maxPot1}$ because the second term $\nabla\cdot\mathbf{A}$ is getting in your way. Take $\chi$ to be any solution to $\nabla\cdot\mathbf{A} = -\nabla^2\chi$ and make the transformation $\mathbf{A}\to\mathbf{A}'=\mathbf{A} + \nabla\chi$ which makes $\nabla\cdot\mathbf{A}' = 0$. The equation $\nabla\cdot\mathbf{A} = -\nabla^2\chi$ is simply Poisson's Equation and an existence proof will allow us to conclude such a $\chi$ exists as long as $\nabla\cdot\mathbf{A}$ dies off appropriately as we approach spatial infinity. This can be seen by the Green's Function solution to the problem which is simply
+\begin{equation*}
+\chi(t, \mathbf{x}) = -\frac{1}{4\pi}\int \frac{\nabla\cdot\mathbf{A}(t,\mathbf{x}')}{|\mathbf{x} - \mathbf{x}'|}\,\dd[3]{\mathbf{x}'}
+\end{equation*}
+
+These transformations of the potentials are called \textbf{gauge transformations} and have no effect on the actual physics of what is happening (at least classically). When one imposes an extra condition which the potentials must satisfy, we call it choosing a gauge. Here are a few common examples.
+\begin{table}[H]
+\centering
+\begin{tabular}{| c | c |} \hline
+Coulomb Gauge & $\nabla\cdot\mathbf{A} = 0$ \\ \hline
+Lorenz Guage & $\nabla\cdot\mathbf{A} + \partial_t\varphi = 0$ \\ \hline
+Temporal (Weyl) Gauge & $\varphi = 0$ \\ \hline
+\end{tabular}
+\caption{Common Gauge Choices}
+\label{table:gauges}
+\end{table}
+For each choice of gauge there is a corresponding existence proof underlying the differential equations. Take, for example, the Lorenz Gauge which requires $\chi$ to satisfy the following inhomogeneous wave equation.
+\begin{equation*}
+-\partial_t^2\chi + \nabla^2\chi = -\nabla\cdot\mathbf{A} - \partial_t\varphi
+\end{equation*}
+We can, again, use a Green's function solution to write down the most general solution to the problem that satisfies sensible boundary conditions, and is consistent with causality as
+\begin{equation*}
+\chi(t,\mathbf{x}) = \frac{1}{4\pi}\int \frac{\nabla\cdot\mathbf{A}(t_\text{r},\mathbf{x}') + \partial_t\varphi(t_\text{r},\mathbf{x}')}{\left|\mathbf{x} - \mathbf{x}'\right|}\,\dd[3]{\mathbf{x}'}
+\end{equation*}
+where $t_\text{r}\coloneqq t - \left|\mathbf{x} - \mathbf{x}'\right|$ is called the \textit{retarded time}.
+Lastly, for the Temporal Gauge we simply choose $\chi$ to satisfy $\partial_t\chi = \varphi$ and when we make the gauge transformation, $\varphi'\equiv 0$ almost everywhere.
+
+\section{Symmetry of Lagrangian}
+With the idea of a gauge transformation, we can ask what happens to the Lagrangian if we perform such a transformation. If the transformations leave the physical electric and magnetic fields unchanged, then we would expect the Lagrangian to also remain unchanged considering it determines the equations of motion of the system. Remembering the EM Lagrangian \ref{eq:lagEM} we have the following transformation.
+\begin{align*}
+L_\text{EM}\to L_\text{EM}' & = \frac{1}{2}m\dot{\mathbf{x}}^2 - q\left(\varphi - \partial_t\chi\right) + q\dot{\mathbf{x}}\cdot\left(\mathbf{A} + \nabla\chi\right) \\
+ & = \frac{1}{2}m\dot{\mathbf{x}}^2 - q\varphi + q\dot{\mathbf{x}}\cdot\mathbf{A} - q\partial_t\chi + q\dot{\mathbf{x}}\cdot\nabla\chi \\
+ & = L_\text{EM} + q\left(\partial_t\chi + \dot{\mathbf{x}}\cdot\nabla\chi\right) \\
+ & = L_\text{EM} + \dv{t}q\chi(t,\mathbf{x})
+\end{align*}
+The characteristic of only changing by a total derivative is very important. Under the above gauge transformation the action \ref{eq:action} transforms to $S\to S + q\chi|_\partial$. If the region of space-time we wish to consider is finite, we can choose $\chi|_\partial$ to be some constant and hence the action only changes by a constant which does not affect the equations of motion. On the other hand if we consider all of space-time then $\chi$ should vanish at spatial infinity and hence the action is unaffected. Either way, the equations of motion are unaffected.
+
+\subsection{Symmetry of Lagrangian Density}\label{lagdensym}
+Suppose we are studying the general Lagrangian density (herein referred to as the Lagrangian) dependent on a complex scalar field.
+\begin{equation}\label{eq:complexScalar}
+\lag = -\partial_\mu\varphi\,\partial^\mu\overline{\varphi} - V(|\varphi|)
+\end{equation}
+It is easy to see if we make the global substitution $\varphi\to\e^{\im \alpha}\varphi$ where $\alpha\in \mathbb{R}$, the Lagrangian remains invariant and the equations of motion are hence unaffected. It is natural to then ask what if $\alpha$ is not just a constant, but rather a function of space, i.e. $\alpha(x)$. Under this transformation the derivative of the field $\varphi$ transforms as
+\begin{align}\label{eq:noSym}
+\partial_\mu\varphi\to (\partial_\mu\varphi)' & = \partial_\mu\left(\e^{\im\alpha(x)}\varphi\right) \nonumber\\
+ & = \e^{\im\alpha(x)}\left(\partial_\mu\varphi + \im\varphi\,\partial_\mu\alpha(x)\right)
+\end{align}
+and hence it is clear this local transformation will not leave the Lagrangian invariant. The idea is then to build a new type of derivative what \textit{would} leave the Lagrangian invariant. Such a derivative would transform according to
+\begin{equation*}
+D_\mu\varphi\to(D_\mu\varphi)' = \e^{\im\alpha(x)}D_\mu\varphi
+\end{equation*}
+We can construct such a derivative by examining why we don't have symmetry in (\ref{eq:noSym}). The extra term can be cancelled by subtracting an associated term in our new derivative. In particular we can guess $D_\mu = \partial_\mu - \im A_\mu(x)$ where $A_\mu(x)$ is just some function of spacetime (for now). Under the local transformation this derivative transforms as follows.
+\begin{align*}
+D_\mu\varphi \to (D_\mu\varphi)' & = \left(\partial_\mu  - \im A_\mu(x)\right)\e^{\im\alpha(x)}\varphi \\
+ & = e^{\im\alpha(x)}\left(\partial_\mu\varphi + \im \varphi\, \partial_\mu \alpha(x) - \im A_\mu(x)\varphi\right)
+\end{align*}
+But this still isn't right! What if this vector field $A_\mu$ that we added was in some way affected when we made the local gauge transformation? Even though this field seems physically superfluous, what if it had some effect on the dynamics of the system and hence would have it's own transformation law. If we force it's transformation law to respect the symmetry of the Lagrangian then we obtain
+\begin{equation}\label{eq:vectorTrans}
+A_\mu\to A_\mu' = A_\mu + \partial_\mu\alpha.
+\end{equation}
+With this transformation the modified derivative above remains invariant, and hence so does the Lagrangian. Finally!
+
+To recap, if we require a local gauge invariance we were forced to introduce a new field which is referred to as a \textit{gauge field} and it's transformation law is specified by (\ref{eq:vectorTrans}). This field played a starring role in the modified derivative, hereinafter referred to as the \textit{gauge covariant derivative}. Hence the final Lagrangian we have arrived upon which respects the local gauge transformation is
+\begin{equation}\label{eq:covLag}
+\lag = D_\mu\varphi D^\mu\varphi - V(|\varphi|).
+\end{equation}
+
+When referring to this sort of problem physicists and mathematicians often say the Lagrangian has a $\mathsf{U}(1)$ symmetry. In general we have the following definition.
+\begin{equation}\label{eq:unitaryG}
+\mathsf{U}(n)\coloneqq\left\{U\in\mathbb{C}^{n\times n} \, \bigg{|} \, UU^\dagger = \mathbf{1}\right\}
+\end{equation}
+where $\mathbb{C}^{n\times n}$ denotes $n$ by $n$ matrices with entries in $\mathbb{C}$, $U^\dagger$ denotes the Hermitian conjugate, and $\mathbf{1}$ denotes the identity matrix. This object is called the \textit{unitary group}\footnote{An important subgroup of this group is unitary matrices whose determinant is $+1$, i.e. $\det U = 1$. These matrices indeed form a subgroup and is called the \textit{special unitary group} denoted $\mathsf{SU}(n)$.} and it forms an important set of matrices which is a group under matrix multiplication. In particular $\mathsf{U}(1)$ denotes 1 by 1 matrices, or complex numbers whose norm is 1, i.e. complex numbers on the unit circle. By saying the Lagrangian has a $\mathsf{U}(1)$ symmetry, means if we take an element from the group and multiply it by the field, the Lagrangian remains invariant.
+
+Here we note an important homeomorphism (that is, a continuous bijection with continuous inverse) that allows us to better understand what a $\mathsf{U}(1)$ symmetry means. First we will define two new groups very much related to $\mathsf{U}(n)$ and $\mathsf{SU}(n)$. The \textit{orthogonal group} is defined by the following
+\begin{equation}
+\mathsf{O}(n)\coloneqq\left\{O\in\mathbb{R}^{n\times n}\,\bigg{|}\,OO^\intercal = \mathbf{1}\right\},
+\end{equation}
+with an important subgroup $\mathsf{SO}(n)$ defined as matrices in $\mathsf{O}(n)$ with the additional property that $\det O = 1$. These matrices are then called the \textit{special orthogonal group}. It is important to recall that rotation matrices satisfy $RR^{\intercal} = \mathbf{1}$ and additionally $\det R = 1$ (rotation here meaning proper rotation and not allowing inversions). Hence $\mathsf{SO}(2)$ corresponds to rotations of $\mathbb{R}^2$ and similarly in higher dimensions.
+
+Getting back, the original Lagrangian (\ref{eq:complexScalar}) depends upon a complex scalar field $\varphi$ which can always be written as $\varphi = \varphi_1 + \im\varphi_2$ where $\varphi_1, \varphi_2$ are both real-valued scalar fields. The question is then ``what does the action $\varphi\to \e^{\im\alpha}\varphi$ correspond to in terms of the real valued scalar fields?" Explicitly, using the correspondence between $\mathbb{C}$ and $\mathbb{R}^2$, we have
+\begin{align*}
+\varphi \to \e^{\im\alpha}\varphi & = \e^{\im\alpha}\left(\varphi_1 + \e^{\im\frac{\pi}{2}}\varphi_2\right) \\
+ & = \left(\cos{\alpha} + \im \sin{\alpha}\right)\left(\varphi_1 + \im\varphi_2\right) \\
+ & = \varphi_1\cos{\alpha} - \varphi_2\sin{\alpha} + \im\left(\varphi_1\sin{\alpha} + \varphi_2\cos{\alpha}\right)
+ \end{align*}
+ Now, using the fact that $\mathbb{C}\ni z = x + \im y\cong \begin{pmatrix}x\\y\end{pmatrix}\in\mathbb{R}^2$, we can write the following.
+ \begin{align*}
+\varphi\to\e^{\im\alpha}\varphi & \cong \begin{pmatrix} \varphi_1\cos{\alpha} - \varphi_2\sin{\alpha} \\ \varphi_1\sin{\alpha} + \varphi_2\cos{\alpha} \end{pmatrix} \\
+ & = \begin{pmatrix} \cos{\alpha} & -\sin{\alpha} \\ \sin{\alpha} & \cos{\alpha} \end{pmatrix}\begin{pmatrix} \varphi_1 \\ \varphi_2 \end{pmatrix} \\
+ & = R_\alpha\pmb{\varphi}
+\end{align*}
+where $R_\alpha$ is the rotation matrix representing a rotation in $\mathbb{R}^2$ through an angle $\alpha$ and $\pmb{\varphi} \coloneqq (\varphi_1, \varphi_2)^\intercal$. We note that this local transformation $\varphi\to\e^{\im\alpha}$ of a complex scalar field corresponds to a rotation of the corresponding real components. Hence an action of an element of $\mathsf{U}(1)$ on $\varphi$ ``is the same thing" as an action of an element of $\mathsf{SO}(2)$ on $\pmb{\varphi}$. This correspondence is very important and can be made into a homeomorphism by defining $f:\mathsf{U}(1)\to \mathsf{SO}(2)$ as
+\begin{equation}\label{eq:homeo}
+f\left(\e^{\im\alpha}\right)\coloneqq\begin{pmatrix} \cos{\alpha} & -\sin{\alpha} \\ \sin{\alpha} & \cos{\alpha} \end{pmatrix}.
+\end{equation}
+This homeomorphism, written $\mathsf{U}(1)\cong \mathsf{SO}(2)$, allows us to understand that our (complex) Lagrangian having a $\mathsf{U}(1)$ symmetry is the same thing as the Lagrangian, written in component form, having a rotational symmetry.
+
+\section{Noether's Theorem Revamped}\label{noether2}
+As we saw in \ref{noethers}, Noether's Theorem provides a systematic way to study the effects of symmetries. Now that we have a more advanced study of classical fields, it is useful to translate theorem \ref{noetherian} into the new language of fields. We start with a definition about what symmetries really are in our new context of fields.
+\begin{definition}
+A transformation of fields $\phi\to\phi + \delta\phi$ is said to be a symmetry of $\lag$ if, upon transformation the Lagrangian changes by a total divergence.
+\begin{equation}
+\delta\lag = \partial_\mu F^\mu
+\end{equation}
+Where $F^\mu(\phi)$ is an arbitrary collection of functions, of the transformation field, that decay to 0 at infinity.
+\end{definition}
+It is important to note this is rather different than the symmetry definition for the particle Lagrangian where we said the Lagrangian musn't change under the transformation. This difference comes from the fact that the Lagrangian density if integrated over all space, and if there is an extra divergence, i.e. $\partial_\mu F^\mu$, then they get evaluated on the boundary and hence go to 0. With this definition we can now state the new version of Noether's Theorem.
+\begin{theorem}\label{noetherfield}
+Every continuous symmetry of the Lagrangian $\lag$ yields a current $j^\mu(t,\mathbf{x})$ that satisfies
+\begin{equation}\label{eq:conscurrent}
+\partial_\mu j^\mu = 0 \quad \iff \quad \pdv{j^0}{t} + \nabla\cdot\mathbf{j} = 0
+\end{equation}
+\end{theorem}
+\begin{proof}
+Let $\phi\to\phi + \delta\phi$ be a symmetry transformation of $\lag$. Now the Lagrangian, under this transformation, changes as follows.
+\begin{align}
+\delta\lag & = \pdv{\lag}{\phi}\delta\phi + \pdv{\lag}{(\partial_\mu\phi)}\partial_\mu(\delta\phi) \\
+ & = \left(\pdv{\lag}{\phi} - \partial_\mu\pdv{\lag}{(\partial_\mu\phi)}\right)\delta\phi + \partial_\mu\left(\pdv{\lag}{(\partial_\mu\phi)}\delta\phi\right)
+\end{align}
+When the Euler-Lagrange equations are satisfied, the first term is 0 and hence the change in the Lagrangian is a total derivative. Since $\delta\lag = \partial_\mu F^\mu$ we can define
+\begin{equation}
+j^\mu\coloneqq \pdv{\lag}{(\partial_\mu\phi)}\delta\phi - F^\mu
+\end{equation}
+which satisfies $\partial_\mu j^\mu = 0$ by construction.
+\end{proof}
+In example \ref{momcons} we saw that spatial translations led to conservation of momentum. We can then ask what happens when we shift spacetime.
+\begin{example}\label{ex:enmomtensor}
+Upon the shift of spacetime coordinates we have $\phi(x^\mu)\to\phi(x^\mu - \varepsilon^\mu)$. In order to make this transformation infinitesimal, or written in form $\phi + \delta\phi$ we Taylor expand the transformed field to read $\phi(x^\mu - \varepsilon^\mu) = \phi(x^\mu) - \varepsilon^\mu\partial_\mu\phi(x^\mu)$. Now the Lagrangian changes as
+\begin{equation}
+\lag\to \lag(x^\mu - \varepsilon^\mu) = \lag - \varepsilon^\mu\partial_\mu\lag
+\end{equation}
+and hence we can use Noether's Theorem \ref{noetherfield} to construct a conserved (Noether) current for this transformation
+\begin{align}\label{eq:enmomtensor}
+j^\mu & = \pdv{\lag}{(\partial_\mu\phi)}\left(-\varepsilon^\nu\partial_\nu\phi\right) + \varepsilon^\mu\lag \\
+ & = \varepsilon^\nu T^\mu_{\phantom{\mu}\nu}
+\end{align}
+This new symbol $T^\mu_{\phantom{\mu}\nu}$ is called the \textit{energy-momentum tensor} and holds much of the important information about the system at hand. By construction (Noether's Theorem) it has divergence-less rows, i.e., $\partial_\mu T^\mu_{\phantom{\mu}\nu} = 0$. Perhaps the most important component of this object is the $00$ component.
+\begin{align}
+T^{00} & = -\pdv{\lag}{\dot{\phi}}\dot{\phi} - \lag = -\mathcal{H}
+\end{align}
+where $\mathcal{H}$ is the Hamiltonian density (akin the the Lagrangian density). This value is exactly the energy density, and integrating it yields the total energy i.e. $E = \int T^{00}\dd[3]{x}$. It is important to note all other components of this object are very familiar, such as momentum density and momentum currents.
+\end{example}

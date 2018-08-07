@@ -1,0 +1,304 @@
+With the tools from Chapter \ref{chap:fields} we now have the tools to break down our problem at hand. In this chapter we will present a model with soliton solutions and then define and study $\mathcal{Q}$-balls and $\mathcal{Q}$-vortices.
+
+\section{\textit{The} Lagrangian}
+In this section we first and foremost introduce the Lagrangian of study. We then proceed to apply techniques learned through Chapter \ref{chap:fields} to better understand the model.
+
+Through the rest of this thesis we study the following Lagrangian of a complex scalar field in $3+1$ dimensions.
+\begin{equation}\label{eq:complexlag}
+\lag\coloneqq -\partial_\mu\Phi\,\partial^\mu\overline{\Phi} - V(|\Phi|)
+\end{equation}
+This Lagrangian is special as even without specifying the potential we have a $\mathsf{U}(1)$ symmetry $\Phi \to \e^{\im\alpha}\Phi$ as we saw in Section \ref{lagdensym}. While here we work with the abelian group $\mathsf{U}(1)$, Q-Balls have been developed with more general gauge groups as in \cite{nonabelian}. With more ideas about symmetry from Noether's Theorem and section \ref{noether2} we can better understand this symmetry. In infinitesimal form ($\alpha\ll 1$) this symmetry is (using the Taylor expansion of $\e^x$) $\Phi \to \Phi + \im\alpha\Phi$ and $\overline{\Phi} \to \overline{\Phi} - \im\alpha\overline{\Phi}$. Under this infinitesimal form, the Lagrangian changes as follows.
+\begin{align}
+\lag & \to -\partial_\mu(\Phi + \im\alpha\Phi)\,\partial^\mu(\overline{\Phi} - \im\alpha\overline{\Phi}) - V(|\Phi + \im\alpha\Phi|) \\
+ & = -\left(\partial_\mu\Phi + \im\alpha\partial_\mu\Phi\right)\left(\partial^\mu\overline{\Phi} - \im\alpha\overline{\Phi}\right) - V(|\Phi|) \\
+ & = -\partial_\mu\Phi\,\partial^\mu\overline{\Phi} + \cancelto{0}{\alpha^2\partial_\mu\Phi\,\partial^\mu\overline{\Phi}} - V(|\Phi|) \\
+ & = \lag
+\end{align}
+Where we have used the fact that $|\Phi + \im\alpha\Phi| = \left[\left(\Phi + \im\alpha\Phi\right)\left(\overline{\Phi} - \im\alpha\overline{\Phi}\right)\right]^{1/2} = \left[\Phi\overline{\Phi} + \alpha^2\Phi\overline{\Phi}\right]^{1/2}$ and with the fact that $\alpha \ll 1$ we can throw away higher powers of $\alpha$ to conclude $|\Phi + \im\alpha\Phi| = |\Phi|$. Thus, as expected this transformation has no effect on the Lagrangian and hence we can trivially write $\delta\lag = 0$. For simplicity the Noether's Theorem in Chapter \ref{chap:fields} was for a Lagrangian dependent on one field. For our Lagrangian, we treat $\Phi$ and $\overline{\Phi}$ as separate fields\footnote{Written in terms of real components we have $\Phi = \phi_1 + \im\phi_2$ and $\overline{\Phi} = \phi_1 - \im\phi_2$ which are clearly linearly independent functions as long as $\phi_2$ is non-trivial.} and in a more generalized Noether's Theorem we simply add terms to the current as follows.
+\begin{align}
+\alpha j^\mu & = \pdv{\lag}{(\partial_\mu\Phi)}\delta\Phi + \pdv{\lag}{(\partial_\mu\overline{\Phi})}\delta\overline{\Phi} \label{eq:current} \\
+ & = -\partial^\mu\overline{\Phi}\left(\im\alpha\Phi\right) - \partial^\mu\Phi\left(-\im\alpha\overline{\Phi}\right) \label{eq:current2}\\
+ & = \alpha\im\left(\overline{\Phi}\partial^\mu\Phi - \Phi\partial^\mu\overline{\Phi}\right)
+\end{align}
+It is important to note here how we went from (\ref{eq:current}) to (\ref{eq:current2}) as $\partial_\mu\overline{\Phi}$ does not appear in the original Lagrangian (\ref{eq:complexlag}). As stated in section \ref{sec:notation} we can raise and lower indices by contracting with the underlying metric. Thus we can rewrite (\ref{eq:complexlag}) as
+\begin{equation}\label{eq:laglowered}
+\lag = -\eta^{\mu\nu}\partial_\mu\Phi\partial_\nu\overline{\Phi} - V(|\Phi|)
+\end{equation}
+where $\eta^{\mu\nu}$ is the inverse of $\eta_{\mu\nu}$ and the inverse of $\eta_{\mu\nu} = \mathrm{diag}(-1,1,1,1) = \eta^{\mu\nu}$. Now we can take $\pdv{\lag}{(\partial_\mu\overline{\Phi})}$ as we have a $\partial_\mu\overline{\Phi}$ term in (\ref{eq:laglowered}). Explicitly this is
+\begin{align}
+\pdv{\lag}{(\partial_\mu\overline{\Phi})} & = \eta^{\nu\mu}\partial_\nu\Phi \\
+ & = \partial^\mu\Phi
+\end{align}
+Now that we have constructed the Noether current for the $\mathsf{U}(1)$ internal symmetry, we can construct what is called the \textit{Noether Charge}. We know the current satisfies
+\begin{equation}
+\pdv{j^0}{t} + \nabla\cdot\mathbf{j} = 0
+\end{equation}
+by Theorem \ref{noetherfield}. Thus, we can define the Noether Charge
+\begin{equation}\label{eq:noethercharge}
+Q = \int_{\mathbb{R}^3}j^0\dd[3]{x}
+\end{equation}
+which we will show does not depend on time, and hence is a constant of motion. To show this we will simply take the time derivative of (\ref{eq:noethercharge}) and show it is equal to 0.
+\begin{align}
+\pdv{Q}{t} & = \pdv{t}\int_{\mathbb{R}^3}j^0\dd[3]{x} \\
+ & = \int_{\mathbb{R}^3}\pdv{j^0}{t}\dd[3]{x} \\
+ & = -\int_{\mathbb{R}^3}\nabla\cdot\mathbf{j}\dd[3]{x}
+\end{align}
+We can now use the Divergence Theorem to write this integral as a surface term over the boundary of integration. However since $\mathbf{j}$ is supposed to be well behaved it decays to 0 at infinity, and thuse the surface term is 0. Thus we conclude $\pdv{Q}{t} = 0$. This is very important as constants of motion are extremely helpful not only to solve problems, but also as deeper insights into the problem. Note that this argument was provided without any reference to a specific Lagrangian, as long as we have a current, we have an associated charge. Thus we can work out what the Noether Charge is for (\ref{eq:complexlag}). We first put all indices downstairs as these correspond to our regular derivatives (derivatives with respect to vectors, rather than derivatives with respect to co-vectors, or linear functionals, or dual-vectors or whatever you'd like to call them).
+\begin{align}
+j^\mu & = \im\left(\overline{\Phi}\partial^\mu\Phi - \Phi\partial^\mu\overline{\Phi}\right) \\
+ & = \im\eta^{\mu\nu}\left(\overline{\Phi}\partial_\nu\Phi - \Phi\partial_\nu\overline{\Phi}\right) \\
+j^0 & = \im\eta^{0\nu}\left(\overline{\Phi}\partial_\nu\Phi - \Phi\partial_\nu\overline{\Phi}\right)
+\end{align}
+In order to proceed we recognize the only component of the ``vector'' $\eta^{0\nu}$ that is non-vanishing is the first component $\eta^{00} = -1$ so our sum over $\nu$ is really just one term. Thus our Noether Charge is given as
+\begin{align}
+Q & = \int j^0\dd[3]{x} \\
+ & = \im\int\left(\Phi\dot{\overline{\Phi}} - \overline{\Phi}\dot{\Phi}\right)\dd[3]{x}\label{eq:charge}
+\end{align}
+In terms of a quantized theory $Q$ often plays the role of either some sort of electric charge, or particle number. Thus we only have these fundamental facts of nature because of these symmetries of the Lagrangian and Noether Theorem!
+
+The last construction before moving on is the Energy-Momentum Tensor as we saw in Example \ref{ex:enmomtensor}. This is an important object for many reasons, but it will give us the energy density which we be a vital piece of our problem. From (\ref{eq:enmomtensor}) we have
+\begin{align}
+T^{\mu\nu} & = -\pdv{\lag}{(\partial_\mu\Phi)}\partial^\nu\Phi - \pdv{\lag}{(\partial_\mu\overline{\Phi})}\partial^\nu\overline{\Phi} + \eta^{\mu\nu}\lag \\
+ & = \partial^\mu\overline{\Phi}\partial^\nu\Phi + \partial^\mu\Phi\partial^\nu\overline{\Phi} + \eta^{\mu\nu}\lag \label{eq:enmomlowered}
+\end{align}
+With this object we can find all sorts of physics quantities that might be of interest such as $T_{00}\!\iff$Energy, $T_{0\varphi}\!\iff$Angular Momentum, etc,.
+
+\section{Soliton Ansatz}\label{sec:solitonans}
+In order to proceed we make some fundamental assumption about our solution $\Phi$ and it's structure. As nice as it would be to have $\Phi$ be independent of time, we would have an accompanying vanishing Noether Charged which we worked so hard to get. Thus we require our solution to indeed have a time dependence, but only a harmonic one $\e^{\im\omega t}$. We also want spherically symmetric solutions as the objects we are studying are Q-\underline{Balls}. To recap, we force our solutions into the form
+\begin{equation}\label{eq:solitonansatz}
+\Phi(t, \mathbf{x}) = \phi(r)\e^{\im\omega t}
+\end{equation}
+where $\phi(r)$ is a real field. Under this spherically symmetric soliton ansatz the implicit time dependence of many of our objects disappears. For example our Lagrangian (\ref{eq:complexlag}) now reads
+\begin{align}
+\lag & = -\eta^{\mu\nu}\partial_\mu\Phi\partial_\nu\overline{\Phi} - V(|\Phi|) \\
+ & = |\dot{\Phi}|^2 - |\nabla\Phi|^2 - V(|\Phi|) \\
+ & = \omega^2\phi^2 - \phi_r^2 - V(\phi)
+\end{align}
+which is becoming much more ``differential equation''-esque. Most importantly though, $\lag$ does not have any implicit or explicit $t$ dependence and hence we have conservation of energy.\footnote{This fact is proved twice. First we can attack it via Noether's Theorem because of the symmetry $t\to t + s$ which yields a conserved current which ends up having a Noether Charge of the energy. Or, we can show that the Lagrangian being independent of time is equivalent to the Hamiltonian being time-independent. If the Hamiltonian is independent of time, then surely the energy is constant by construction of the Hamiltonian.}
+
+The energy density ($T^{00}$) is also very important and we can now calculate that with (\ref{eq:solitonansatz}) in mind. Remembering (\ref{eq:enmomlowered}) we have
+\begin{align}
+T^{00} & = 2|\dot{\Phi}|^2 - \lag \\
+ & = 2|\dot{\Phi}|^2 - |\dot{\Phi}|^2 + |\nabla\Phi|^2 + V(|\Phi|) \\
+ & = \omega^2\phi^2 + \phi_r^2 + V(\phi)
+\end{align}
+where $\phi_r$ denotes $\dv{\phi}{r}$.\footnote{I just don't like to commit atrocities such as $\phi'^2$.} With this we can easily calculate the total energy of the system.
+\begin{align}
+E & = \int T^{00}\dd[3]{x} \\
+ & = \int_0^{2\pi}\!\!\dd{\varphi}\int_0^\pi\!\!\dd{\theta}\int_0^\infty\!\!\dd{r}\left(\omega^2\phi^2 + \phi_r^2 + V(\phi)\right)r^2\sin{\theta} \\
+ & = 4\pi\int_0^\infty r^2\left(\omega^2\phi^2 + \phi_r^2 + V(\phi)\right)\dd{r} \label{eq:nospinenergy}
+\end{align}
+The conserved charge (\ref{eq:charge}) is then
+\begin{align}
+Q & = \im\int\left(-\im\omega\phi^2 - \im\omega\phi^2\right)\dd[3]{x} \\
+ & = 2\omega\int_0^{2\pi}\!\!\dd{\varphi}\int_0^\pi\!\!\dd{\theta}\int_0^\infty\!\!\dd{r}\phi^2 r^2\sin{\theta} \\
+ & = 8\pi\omega\int_0^\infty r^2\phi^2\dd{r} \label{eq:nospincharge}.
+\end{align}
+Now of course one is very interested in the equations of motion of a system once a model is proposed. Thus we investigate the Euler-Lagrange equations (\ref{eq:eulerlag}) for our Lagrangian. Note there will be two because our Lagrangian is a function of both $\Phi$ and $\overline{\Phi}$. Here we present the ELE for the conjugate field so the field equation comes out in terms of the field $\Phi$ rather than $\overline{\Phi}$.
+\begin{equation}
+\pdv{\lag}{\overline{\Phi}} = \partial_\mu\pdv{\lag}{(\partial_\mu\overline{\Phi})}
+\end{equation}
+Computing these derivative we have
+\begin{align}
+\pdv{\lag}{\overline{\Phi}} & = -\dv{V(|\Phi|)}{|\Phi|}\dv{|\Phi|}{\overline{\Phi}} \\
+ & = -V'\frac{\Phi}{2|\Phi|}
+\end{align}
+In order to compute $\pdv{\lag}{(\partial_\mu\overline{\Phi})}$ we use the fact that we can exchange the upper and lower indices in the Lagrangian (\ref{eq:complexlag}) to have the first term read $-\partial^\mu\Phi\partial_\mu\overline{\Phi}$. Then it is easy to compute the right hand side as follows.
+\begin{align}
+\pdv{\lag}{(\partial_\mu\overline{\Phi})} & = -\partial^\mu\Phi
+\end{align}
+Hence we can write our full Euler-Lagrange equation as
+\begin{equation}
+V'\frac{\Phi}{2|\Phi|} = \partial_\mu\partial^\mu\Phi
+\end{equation}
+On the right hand side we have the operator $\partial_\mu\partial^\mu$ which we can easily compute using (\ref{eq:partials}) to see $\partial_\mu\partial^\mu = -\partial_t^2 + \nabla^2$ where $\nabla^2$ is the Laplacian for spatial coordinates. Hence, in spherical coordinates\footnote{In spherical coordinates the radial part of the Laplacian is $\frac{1}{r^2}\partial_r\left(r^2\partial_r\right)$.} (with a radially symmetric $\Phi$, that is if $\Phi(t,r)$) we have
+\begin{align}
+V'\frac{\Phi}{2|\Phi|} & = -\ddot{\Phi} + \frac{1}{r^2}\pdv{r}\left(r^2\Phi'\right) \\ & = -\ddot{\Phi} + \frac{2\Phi'}{r} + \Phi''
+\end{align}
+where $\dot{f}$ denotes a time derivative and $f'$ denotes a spatial, or in our case $r$ derivative. Hence upon substituting our spherical symmetric ansatz (\ref{eq:solitonansatz}) we have the following differential equation.
+\begin{equation}\label{eq:DEnospin}
+\omega^2\phi + \frac{2\phi'}{r} + \phi'' = \frac{V'}{2}
+\end{equation}
+Since we often only care about the global behavior of the potential, we can arbitrarily scale it, and hence absorb the factor 2 into the potential so the right hand side of (\ref{eq:DEnospin}) reads $V'$.
+
+\section{Adding a Twist}
+With the basic idea of Q-vortices behind us it is then natural to ask, as done in \cite{spinningq}, if there exist spinning generalizations of the objects studied in Section \ref{sec:solitonans}. To study this possibility we posit a solution $\Phi$ in $3 + 1$\footnote{We are indeed working in 4-spacetime dimensions, but we are not allowing our solution to have a $z$ dependence. This is because we are attempting to model a spinning Q-vortex solution travelling in the $z$-direction.} dimensions to have a particular dependence on an angular variable as
+\begin{equation}\label{eq:spinningsoliton}
+\Phi(t, \mathbf{x}) = \phi(r)\,\e^{\im\omega t + \im N\theta}
+\end{equation}
+where we are now working in cylindrical coordinates $(t, r, \theta, z)$. As before we calculate some derivatives in order to write the field equations. The potential term is exactly the same as before so we leave out the repetition and continue to the Laplacian which in cylindrical coordinates reads $\nabla^2 = r^{-1}\partial_r\left(r\partial_r\right) + r^{-2}\partial_\theta^2 + \partial_z^2$.
+\begin{align}
+\partial_\mu\partial^\mu\Phi & = -\ddot{\Phi} + \nabla^2\Phi \\
+ & = -\ddot{\Phi} + \frac{\Phi_r}{r}  + \Phi_{rr} + \frac{1}{r^2}\Phi_{\theta\theta}
+\end{align}
+And hence with our spinning soliton ansatz (\ref{eq:spinningsoliton}) our differential equation reads
+\begin{equation}\label{eq:DE}
+\phi'' + \frac{\phi'}{r} + \omega^2\phi - \frac{N^2}{r^2}\phi = V'
+\end{equation}
+where we have used the same scaling argument as used above on Equation (\ref{eq:DEnospin}).
+
+We can also go ahead and calculate the energy of this system. However because this system travels along the $z$-axis we calculate the energy per unit length. This simply means integrating the energy density $T^{00}$ over a 2-dimensional plane rather than all of $\mathbb{R}^3$.
+\begin{align}
+T^{00} & = |\dot{\Phi}|^2 + |\nabla\Phi|^2 + V(|\Phi|) \\
+ & = \omega^2\phi^2 + \left\|\begin{pmatrix} \phi_r \e^{\im\omega t + \im N\theta} \\ \frac{\im N}{r}\phi\e^{\im\omega t +\im N\theta}\end{pmatrix}\right\|^2 + V(\phi) \\
+ & = \omega^2\phi^2 + \phi_r^2 + \frac{N^2}{r^2}\phi^2 + V(\phi)
+\end{align}
+Hence the total energy per unit length is give by
+\begin{align}
+E_\ell & = \int T^{00}\dd[2]{x} \\
+ & = \int_0^{2\pi}\dd{\theta}\int_0^\infty\dd{r}\,r\left(\omega^2\phi^2 + \phi_r^2 + \frac{N^2}{r^2}\phi^2 + V(\phi)\right) \\
+ & = 2\pi \int_0^\infty r\left(\omega^2\phi^2 + \phi_r^2 + \frac{N^2}{r^2}\phi^2 + V(\phi)\right)\dd{r} \label{eq:energyperlength}
+\end{align}
+Before we go on to discuss the angular momentum of this system we note that this formula for the total energy is extremely important as it provides us with the boundary conditions $\phi(0) = 0$ and $\phi(r)\to 0$ as $r\to\infty$. This is implied by (\ref{eq:energyperlength}) as if this was not the case then the third term would blow up and we would not have a system with finite energy which is physically unrealizable.
+
+What is of real interest to us is the angular momentum of this system. In order to calculate that we will first calcuate the Noether Charge (\ref{eq:noethercharge}) which is almost identical to the previous calculation in Section \ref{sec:solitonans} although here we calculate the charge per unit length.
+\begin{align}
+Q_\ell & = \int j^0\dd[2]{x} \\
+ & = 2\omega \int_0^{2\pi}\int_0^\infty r\dd{r}\phi^2 \\
+  & = 4\pi\omega \int_0^\infty r\phi^2 \dd{r} \label{eq:spincharge}
+\end{align}
+We can now extract the angular momentum per unit length from the energy momentum tensor if we integrate $T^{0\theta}$. We fist calculate magnitude of the value to see how much angular momentum these objects have.
+\begin{align}
+|T^{0\theta}| & = \dot{\overline{\Phi}}\Phi_\theta + \dot{\Phi}\overline{\Phi}_\theta \\
+ & = (-\im\omega\phi)(\im N\phi) + (\im\omega\phi)(-\im N\phi) \\
+ & = 2N\omega\phi^2
+\end{align}
+Hence, the angular momentum per unit length is give by
+\begin{align}
+J_\ell & = \int T^{0\theta}\dd[2]{x} = 2\omega N\int_0^{2\pi}\dd{\theta}\int_0^\infty r\phi^2\dd{r} \\
+ & = 4\pi\omega N\int_0^\infty r\phi^2\dd{r} = NQ_\ell
+\end{align}
+What is important about this formula is that for a given $Q_\ell$, the angular momentum is purely determined by $N$.
+
+Now that we all of the basic quantities calculate we can revisit (\ref{eq:DE}). In order to continue the work at hand we must specify a potential in which we wish to study. Before we do this, we look to the conditions set forth on $V$ as shown in \cite{coleman}. Here Coleman shows the parameter $\omega$ must satisfy
+\begin{equation}\label{eq:omegabounds}
+\min_\phi{\frac{2V(\phi)}{\phi^2}}\leq \omega^2 < \left.\dv[2]{V}{\phi}\right|_{\phi = 0}
+\end{equation}
+due to considerations energy considerations. These arguments can be found in Appendix \ref{chap:appendix}. In order for $\omega$ to have a non-empty set to vary in (\ref{eq:omegabounds}) must be satisfied. The only renormalizable potential in the theory given by $V = \frac{1}{2}\mu^2\phi^2 + \lambda \phi^4$ does not satisfy this condition, and hence nonrenormalizable potentials must be considered \cite{coleman}. In this work we take the potential to read
+\begin{equation}\label{eq:potential}
+V(\phi)\coloneqq \lambda\left(\phi^6 - a\phi^4 + b\phi^2\right).
+\end{equation}
+Before we continue some remarks are in order. In field theory, suppose we are given a potential $U(\varphi) = \alpha_0 + \alpha_1\varphi + \alpha_2\varphi^2 + \cdots + \alpha_n\varphi^n$. Then the ``quadratic self coupling'' is lingo for $\alpha_2$ and in a theory with massive particles it is the square of the mass $m^2$. This value can also be found as $m^2\coloneqq U''(0)$. Hence for the potential given in (\ref{eq:potential}) we have $m^2 = V''(0) = 2\lambda b$ which is also equal to $\left.\frac{2V(\phi)}{\phi^2}\right|_{\phi = 0}$. Hence we can interpret the condition (\ref{eq:omegabounds}) as saying the the function $\frac{2V(\phi)}{\phi^2}$ must dip below $m^2$ in order for $\omega$ to range in a non-empty set. The reasons for this are given in Appendix \ref{chap:appendix}.
+
+As convention we take $V(0) = 0$, which is always possible as adding a constant to the potential is immaterial. We also wish $m^2$ to be positive. Since $m^2 = 2\lambda b$, either $\lambda,b\in\mathbb{R}_+$ or $\lambda,b\in\mathbb{R}_-$. However, we wish $V(0)$ to be a global minimum, and hence $\lambda$ must be positive, and by the above, so must $b$. In order for (\ref{eq:omegabounds}) to be satisfied, the potential must have a local minima at $\tilde{\phi}\neq 0$, and hence $a$ must also be positive and non-zero.
+
+The last condition we impose on the potential is that it must not dip below 0 as to have a global minima at a point $\tilde{\phi} \neq 0$. The following argument ensures this is the case for $\phi \neq 0$.
+\begin{align*}
+V(\phi) = \lambda\left(\phi^6 - a\phi^4 + b\phi^2\right) & > 0 \\
+ \phi^4 - a\phi^2 + b & > 0 \\
+ x^2 - ax + b & > 0 
+\end{align*}
+where $x = \phi^2$, and hence the last polynomial written down has no real roots provided it is always greater than 0. Hence the discriminant is negative, which imposes $a^2 - 4b < 0$, or $b > \frac{a^2}{4}$. In recap we have $\lambda, a, b\in\mathbb{R}_+$, and $b > \frac{a^2}{4}$.
+
+\section{Constrained Minimization}\label{sec:consmin}
+In order to show the existence of solutions to (\ref{eq:DE}) we will make use of the Calculus of Variations. In particular we will define a functional $I$ and constraint functional $J$ so that when $I$ is minimized with respect to $J$ we obtain the nonlinear eigenvalue problem $\delta I = \chi\delta J$.
+
+To begin we define the action functional $I:W_0^{1,2}(0,R)\to \mathbb{R}$ as
+\begin{equation}\label{eq:actionfunc}
+I[\phi]\coloneqq \int_0^R\left[\frac{1}{2}\left(r\phi_r^2 + \frac{N^2}{r}\phi^2\right) + r\lambda\left(\phi^6 - a\phi^4 + b\phi^2\right)\right]\dd{r}
+\end{equation}
+and constraint functional $J:W_0^{1,2}(0,R)\to\mathbb{R}$,
+\begin{equation}\label{eq:confunc}
+J[\phi]\coloneqq 2\pi\int_0^R r\phi^2\dd{r}.
+\end{equation}
+Using
+\begin{equation}\label{eq:consmin}
+I_0 \coloneqq \inf_{\phi}\{I[\phi]\,\,\,|\,\, J[\phi] = J_0 \in(0, \infty)\}
+\end{equation}
+we can now prove this problem is well defined.
+
+% we can now prove an existence theorem for positive solutions\footnote{That is solutions who are positive on the interior of $[0,R]$, i.e., $\phi(r) > 0$ for $r\in(0,R)$.}.
+% \begin{theorem}\label{th:existence}
+% For all $N\in\mathbb{Z}$, there exists a tuple $(\phi, \omega^2)$ that solves (\ref{eq:DE}) such that $\phi$ is positive and $\omega^2\in\mathbb{R}_+$ appears in a Lagrange multiplier in the constrained minimization problem (\ref{eq:consmin}).
+% \end{theorem}
+Before we prove the well defined-ness we prove a few minor results which will aid in the proof.
+\begin{lemma}\label{lem:nonlineig}
+The differential equation (\ref{eq:DE}) may be treated as a nonlinear eigenvalue problem such that $\omega^2$ appears in the Lagrange multiplier of (\ref{eq:consmin}). 
+\end{lemma}
+\begin{proof}
+To prove this we will first find the first variation of each functional.
+\begin{align}
+\delta I & = \left.\dv{\varepsilon}I[\phi + \varepsilon\psi]\right|_{\varepsilon = 0} \nonumber\\
+ & = \dv{\varepsilon}\int_0^R \frac{1}{2}\left(r\left(\phi_r + \varepsilon\psi_r\right)^2 + \frac{N^2}{r}\left(\phi + \varepsilon\psi\right)^2\right) \nonumber\\
+ & \phantom{=}\,\,+ \left.r\lambda\left(\left(\phi + \varepsilon\psi\right)^6 - a\left(\phi + \varepsilon\psi\right)^4 + b\left(\phi + \varepsilon\psi\right)^2\right)\dd{r}\right|_{\varepsilon = 0} \nonumber\\
+ & = \int_0^R r\phi_r\psi_r + \frac{N^2}{r}\phi\psi + r\lambda\left(6\phi^5 - 4a\phi^3 + 2b\phi\right)\psi\dd{r} \nonumber\\
+ & = \int_0^R\left[-\left(r\phi_r\right)_r + \frac{N^2}{r}\phi + r\lambda\left(6\phi^5 - 4a\phi^3 + 2b\phi\right)\right]\psi\dd{r}
+\end{align}
+Where, in moving from the second to last, to last line we have integrated by parts on the first term and used the fact that $\phi$ and $\psi$ vanish on the boundary.
+\begin{align}
+\delta J & = \left.\dv{\varepsilon}J[\phi + \varepsilon\psi]\right|_{\varepsilon = 0} \nonumber \\
+ & = \dv{\varepsilon}2\pi\int_0^Rr\left(\phi + \varepsilon\psi\right)^2\dd{r} \nonumber \\
+ & = 4\pi\int_0^Rr\phi\psi\dd{r}
+\end{align}
+Hence when we examine the subsequent Lagrange multiplier equation $\delta I = \chi\delta J$, or equivalently $\delta I - \chi\delta J = 0$ we obtain
+\begin{equation}
+\int_0^R\left[-\left(r\phi_r\right)_r + \frac{N^2}{r}\phi + r\lambda\left(6\phi^5 - 4a\phi^3 + 2b\phi\right) - 4\pi r\chi \phi\right]\psi\dd{r} = 0.
+\end{equation}
+This must be true for all $\psi$, so the only way this can happen is if the bracketed term vanishes. Thus, expanding the first term, and dividing through by $r$ we obtain
+\begin{equation}
+\frac{\phi_r}{r} + \phi_{rr} - \frac{N^2}{r^2}\phi - \lambda\left(6\phi^5 - 4a\phi^3 + 2b\phi\right) + 4\pi\chi \phi
+\end{equation}
+which gives us the equation $4\pi\chi = \omega^2$ for the $\omega^2$ value in terms of the Lagrange multiplier.
+\end{proof}
+
+\begin{lemma}\label{lem:ineq1}
+For all real functions $\phi$ the following inequality holds.
+\begin{equation}
+\phi^6 - a\phi^4 + b\phi^2 \geq \phi^2\left(b - \frac{a^2}{4}\right)
+\end{equation}
+\end{lemma}
+\begin{proof}
+Because of the \textit{amazing} result that all real numbers squared are non-negative we have $\left(\phi^2 - \frac{a}{2}\right)^2\geq 0$. And now, some manipulations.
+\begin{align*}
+\left(\phi^2 - \frac{a}{2}\right)^2 & \geq 0 \\
+\phi^4 - a\phi^2 + \frac{a^2}{4} + b & \geq b \\
+\phi^6 - a\phi^4 + b\phi^2 & \geq \phi^2\left(b - \frac{a^2}{4}\right)
+\end{align*}
+\end{proof}
+\begin{lemma}\label{lem:ineq2}
+Given a function $\phi:[0,R]\to \mathbb{R}$ satisfying $\phi(0) = 0 = \phi(R)$, we have the following integral inequality.
+\begin{equation}
+\int_0^R r\phi^2\dd{r}\leq R^2\int_0^R\frac{\phi^2}{r}\dd{r}
+\end{equation}
+\end{lemma}
+\begin{proof}
+We begin with the simple fact that for $r\in(0,R)$, we have $r^2\leq R^2$. Multiplying by $\phi^2$ changes nothing, and we then divide both sides by $r$ to give $r\phi^2\leq R^2\frac{\phi^2}{r}$. By monotonicity\footnote{Monotonicity meaning if $f\leq g$, then $\int f\leq \int g$.} of the integral from $0$ to $R$ we have
+\begin{equation}
+\int_0^R r\phi^2\dd{r}\leq R^2\int_0^R\frac{\phi^2}{r}\dd{r}
+\end{equation}
+which proves the desired fact.
+\end{proof}
+
+We now have the tools to prove the functional (\ref{eq:actionfunc}) is coercive.
+\begin{theorem}
+The functional defined in (\ref{eq:actionfunc}) is coercive.
+\end{theorem}
+\begin{proof}
+Using Lemma \ref{lem:ineq1} and \ref{lem:ineq2} we can immediately write the following inequality.
+\begin{equation}
+I[\phi] \geq \int_0^R\frac{1}{2}\left(r\phi_r^2 + r\frac{N^2}{R^2}\phi^2\right) + \lambda r\left(b - \frac{a^2}{4}\right)\phi^2\dd{r}
+\end{equation}
+Grouping the $\phi^2$ terms we can use the constraint (\ref{eq:confunc}) (which is prescribed ahead of time) to write
+\begin{align}
+I[\phi] & \geq \frac{1}{2}\int_0^R r\phi_r^2\dd{r} + \underbrace{\left[\frac{N^2}{R^2} + \lambda \left(b - \frac{a^2}{4}\right)\right]J_0}_{\geq 0} \\
+ & \geq \frac{1}{2}\int_0^R r\phi_r^2\dd{r}
+\end{align}
+We now claim the proof is effectively done. As in the definition of coercivity (\ref{def:coercive}), we have written $I[\phi]\geq \delta\|\phi_r\|^2_{L^2(0,R)} - \gamma$ with $\gamma = 0 $, and $\delta = \frac{1}{2}$. The only concern a careful reader might have is that we are integrating $r\dd{r}$ as opposed to something like $\dd{x}\dd{y}$, but this is simply the measure we must work with in handling the problem at hand given in polar coordinates.
+\end{proof}
+
+With the coercivity of $I[\,\cdot\,]$ proved, we can use Theorem 2 in Section 8.2 of \cite{PDE} to say that if $I[\,\cdot\,]$ is also \textit{lower semi-continuous}, then the existence problem is well defined and has a solutions in $W^{1,2}_0(0,R)$. By \href{https://en.wikipedia.org/wiki/Proof_by_intimidation}{proof by intimidation}, it is \textit{\textbf{clearly}} true, and every good student should know that $I[\,\cdot\,]$ is lower semi-continuous!
+
+
+% \begin{proof}[Proof of Theorem \ref{th:existence}:]\label{pr:existence}
+% We begin by proving the action functional (\ref{eq:actionfunc}) is coercive, that is $I[\phi]\to\infty$ as $\|\phi\|\to\infty$. Doing so allows us to understand the global behavior of the given functional and also gives us a lower bound of the functional. Using Lemma \ref{lem:ineq} we can manipulate the potential term in the action functional as follows.
+% \begin{align}
+% I[\phi] & \geq \frac{1}{2}\int_0^R \left(r\phi_r^2 + \frac{N^2}{r}\phi^2\right) + \lambda r\phi^2\left(b - \frac{a^2}{4}\right)\dd{r} \\
+%  & = \frac{1}{2}\int_0^R \left(r\phi_r^2 + \frac{N^2}{r}\phi^2\right)\dd{r} + 2\lambda\left(b - \frac{a^2}{4}\right)J_0
+% \end{align}
+% Thus $I[\cdot]$ is coercive and thus (\ref{eq:consmin}) is well defined. We now let $\{\phi_i\}_{i\in\mathbb{N}}$ be a minimizing sequence of (\ref{eq:consmin}). That is $\phi_i\in W_0^{1,2}(0,R)$, $J[\phi_i] = J_0$, and lastly
+% \begin{equation}
+% I[\phi_1] \geq I[\phi_2] \geq \cdots \geq I_0 = \lim_{i\to\infty}I[\phi_i].
+% \end{equation}
+% Now we note, that because $I[\,\cdot\,]$ and $J[\,\cdot\,]$ are even and weak derivatives satisfy $\dv{r}|\phi| = |\dv{\phi}{r}|$ we can rename our sequence $\phi_i = |\phi_i|$ without loss of generality.
+% \end{proof}
+
