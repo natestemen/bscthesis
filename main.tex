@@ -1,14 +1,27 @@
 \documentclass[12pt]{report}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath,mathtools,physics,amssymb,hyperref,cleveref,cancel,amsbsy,amsthm,cite,float,marginnote}
-\usepackage{csquotes,epigraph}
 \usepackage[nottoc]{tocbibind}
 \usepackage[T1]{fontenc}
-\usepackage{mathrsfs}
-\usepackage{graphicx}
-\graphicspath{ {images/} }
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{amssymb}
 \usepackage{hyperref}
-\hypersetup{
+\usepackage{cleveref}
+\usepackage{cancel}
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{cite}
+\usepackage{float}
+\usepackage{marginnote}
+\usepackage{csquotes}
+\usepackage{epigraph}
+\usepackage{mathrsfs}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{hyperref}
+\hypersetup{%
     colorlinks=true,
     linkcolor=blue,
     filecolor=magenta,      
@@ -30,16 +43,14 @@
 \newcommand{\lag}{\mathcal{L}}
 \newcommand{\im}{\mathrm{i}}
 \newcommand{\e}{\mathrm{e}}
-\newcommand{\eulerlagrange}[1]{\frac{\partial \lag}{\partial #1} = \partial_\mu \bigg(\frac{\partial \lag}{\partial(\partial_\mu #1 )}\bigg)}
+\newcommand{\eulerlagrange}[1]{\frac{\partial\lag}{\partial#1} = \partial_\mu\bigg(\frac{\partial\lag}{\partial(\partial_\mu#1)}\bigg)}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\cl}{cl}
 
 
-
-\title{
-	{Thesis Title}\\
-	{\large New York University Tandon School of Engineering}\\
-	%{\includegraphics{}}
+\title{%
+    {Thesis Title}\\
+    {\large New York University Tandon School of Engineering}\\
 }
 \author{Nathaniel T. Stemen}
 \date{21 February 2017}
@@ -47,35 +58,29 @@
 \begin{document}
 
 
-% - TITLE
-
 \begin{center}
 \begin{minipage}{0.75\linewidth}
     \centering
-    %University logo
-    %\includegraphics[width=0.3\linewidth]{logo.pdf}
-    %\rule{0.4\linewidth}{0.15\linewidth}\par
-    %\vspace{2cm}
     \textbf{\Large{AN INVESTIGATION OF Q-BALLS}} \\ \vspace{1.cm}
-    
+
     \textbf{Submitted in Partial Fulfillment} \\ \vspace{0.5cm}
-    
+
     \textbf{of the Requirements for the} \\ \vspace{0.5cm}
-    
+
     \textbf{Degree of} \\ \vspace{0.75cm}
-    
+
     \textbf{BACHELOR OF SCIENCE IN PHYSICS AND MATHEMATICS}\\ \vspace{0.75cm}
-    
+
     \textbf{at} \\ \vspace{0.5cm}
-    
+
     \textbf{NEW YORK UNIVERSITY} \\ \vspace{0.5cm}
-    
+
     \textbf{TANDON SCHOOL OF ENGINEERING} \\ \vspace{0.5cm}
-    
+
     \textbf{by} \\ \vspace{0.5cm}
-    
+
     \textbf{Nathaniel T. Stemen} \\ \vspace{0.5cm}
-    
+
     \textbf{May 2017}
 \end{minipage}
 \end{center}
@@ -87,56 +92,63 @@
 \noindent
 
 \begin{tabbing}
+    Approved by thesis advisor:
 
-Approved by thesis advisor:
+    \hspace*{.50in} \=  \\
 
-\hspace*{.50in} \=  \\
+    \> \\
 
-\> \\
+    \underline{Major}: Physics and Mathematics \\
 
-\underline{Major}: Physics and Mathematics \\
+    \> \\
+    \> \\
 
-\> \\
-\> \\
+    \> \rule[0.0in]{2.5in}{0.01in} \\
 
-\> \rule[0.0in]{2.5in}{0.01in} \\
+    \> \textbf{Luciano M. Medina} \\
 
-\> \textbf{Luciano M. Medina} \\
+    \> Professor of Mathematics \\
 
-\> Professor of Mathematics \\
+    \> \\
 
-\> \\
-
-\>  Date: \underline{\hspace{2in}} \\
+    \>  Date: \underline{\hspace{2in}} \\
 \end{tabbing}
 
 
 \begin{center}
 \begin{minipage}{\linewidth}
     \centering
-    %University logo
-    %\includegraphics[width=0.3\linewidth]{logo.pdf}
-    %\rule{0.4\linewidth}{0.15\linewidth}\par
-    %\vspace{2cm}
+
     \textbf{AN ABSTRACT} \\ \vspace{1.cm}
-    
+
     \textbf{AN INVESTIGATION OF Q-BALLS} \\ \vspace{0.5cm}
-    
+
     \textbf{by} \\ \vspace{0.75cm}
-    
+
     \textbf{Nathaniel T. Stemen} \\ \vspace{0.75cm}
-    
-    \textbf{Advisor: Luciano M. Medina, Ph.D.}\\ \vspace{1.cm}
-    
+
+    \textbf{Advisor: Luciano M. Medina, Ph.D.} \\ \vspace{1.cm}
+
     {Submitted in Partial Fulfillment of the Requirements} \\ \vspace{0.5cm}
-    
+
     {for the Degree of Bachelor of Science (Physics and Mathematics)} \\ \vspace{1.cm}
-    
+
     {May 2017} \\ \vspace{0.5cm}
-    
+
     {\textbf{Abstract:}}
-    
-    {In this thesis we study the dynamics of a complex scalar field with a nonrenormalizable potential. In particular we study the existence of the non-topological soliton solutions known as Q-Balls. These objects have been proposed as candidates to solve the present baryon asymmetry, and arise in supersymetric theories, as well as abelian gauge theories, non-abelian gauge theores, non-commutative complex scalar field theories, etc. Formulating the existence problem using constrained minimization allows for this approach to translate easily into the numerical work that follows. With this framework the computation of soliton profiles, along with the associated angular momentum parameter are achieved. To best understand the work, we present the prerequisite classical field theory and an introduction to Q-Balls and Q-Vortex solitons.}
+
+    {In this thesis we study the dynamics of a complex scalar field with a
+    nonrenormalizable potential. In particular we study the existence of the
+    non-topological soliton solutions known as Q-Balls. These objects have been
+    proposed as candidates to solve the present baryon asymmetry, and arise in
+    supersymetric theories, as well as abelian gauge theories, non-abelian gauge
+    theores, non-commutative complex scalar field theories, etc. Formulating the
+    existence problem using constrained minimization allows for this approach to
+    translate easily into the numerical work that follows. With this framework
+    the computation of soliton profiles, along with the associated angular
+    momentum parameter are achieved. To best understand the work, we present the
+    prerequisite classical field theory and an introduction to Q-Balls and
+    Q-Vortex solitons.}
 \end{minipage}
 \end{center}
 \clearpage
@@ -153,13 +165,25 @@ Approved by thesis advisor:
 I would like to dedicate this thesis to my dog, Jett.
 
 \chapter*{Acknowledgements}
-I would like to thank, first and foremost, Dr. Luciano M. Medina, the advisor for this work, for his continued support throughout this research and thesis writing process. Without his willingness to give so much time and effort to his students, I would not have learned as much as I did. His continued insight pushed my understanding and his generous supervision allowed me to take the research in directions I wished. For his generous nature I am extremely appreciative.
+I would like to thank, first and foremost, Dr.\ Luciano M. Medina, the advisor
+for this work, for his continued support throughout this research and thesis
+writing process. Without his willingness to give so much time and effort to his
+students, I would not have learned as much as I did. His continued insight
+pushed my understanding and his generous supervision allowed me to take the
+research in directions I wished. For his generous nature I am extremely
+appreciative.
 
-I would also like to thank Professor Joe Esposito who so kindly extended his time to help build the foundations of the work presented here. Even in the midst of raising a daughter he found time to extensively answer and ponder any question I had.
+I would also like to thank Professor Joe Esposito who so kindly extended his
+time to help build the foundations of the work presented here. Even in the midst
+of raising a daughter he found time to extensively answer and ponder any
+question I had.
 
-To my fellow peers Shahmir Shahrol, Igor Pshenychny, Shearyar Khan, Kevin Yeh, and Kye Drageset who provided great conversations about the work, and any field of mathematics or physics in general, even when they had had enough of Q-Balls.
+To my fellow peers Shahmir Shahrol, Igor Pshenychny, Shearyar Khan, Kevin Yeh,
+and Kye Drageset who provided great conversations about the work, and any field
+of mathematics or physics in general, even when they had had enough of Q-Balls.
 
-And finally, to my parents, Charlie, and Diane who provided unwavering support and patience, even when they maybe shouldn't have.
+And finally, to my parents, Charlie, and Diane who provided unwavering support
+and patience, even when they maybe shouldn't have.
 
 
 \tableofcontents
@@ -169,32 +193,39 @@ And finally, to my parents, Charlie, and Diane who provided unwavering support a
 \input{chapters/introduction}
 
 \chapter{Field Theory}\label{chap:fields}
-\epigraph{Newton was the greatest genius that ever existed, and the most fortunate, for we cannot find more than once a system of the world to establish.}{Joseph-Louis Lagrange}
+\epigraph{Newton was the greatest genius that ever existed, and the most
+fortunate, for we cannot find more than once a system of the world to
+establish.}{Joseph-Louis Lagrange}
 \input{chapters/chapter02}
 
 \chapter{Mathematical Prerequisites}\label{chap:prereqs}
-\epigraph{If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.}{John von Neumann}
+\epigraph{If people do not believe that mathematics is simple, it is only
+because they do not realize how complicated life is.}{John von Neumann}
 \input{chapters/chapter03}
 
 \chapter{An introduction to Q-Balls}\label{chap:qballs}
-\epigraph{The career of a young theoretical physicist consists of treating the harmonic oscillator in ever-increasing levels of abstraction.}{Sidney Coleman\\\textit{Inventor of Q-Balls}}
+\epigraph{The career of a young theoretical physicist consists of treating the
+harmonic oscillator in ever-increasing levels of abstraction.}{Sidney Coleman\\\textit{Inventor of Q-Balls}}
 \input{chapters/chapter04}
 
 \chapter{Numerical Investigations of Q-vortex solutions}\label{chap:numerics}
-\epigraph{So, ultimately, in order to understand nature it may be necessary to have a deeper understanding of mathematical relationships. But the real reason is that the subject is enjoyable...}{Richard Feynman}
+\epigraph{So, ultimately, in order to understand nature it may be necessary to
+have a deeper understanding of mathematical relationships. But the real reason
+is that the subject is enjoyable\ldots}{Richard Feynman}
 \input{chapters/chapter05}
 
 \chapter{Conclusion}\label{chap:conclusion}
-\epigraph{Le but de cette thèse est de munir son auteur du titre de Docteur. - The goal of this thesis is to furnish its author with the title of Doctor}{Adrien Douady\\\textit{Beginning of A. Douady's thesis}}
+\epigraph{Le but de cette thèse est de munir son auteur du titre de Docteur.\\
+The goal of this thesis is to furnish its author with the title of Doctor}{Adrien Douady\\\textit{Beginning of A. Douady's thesis}}
 \input{chapters/conclusion}
 
 \appendix
 \chapter{Some (possibly) Useful Facts}\label{chap:appendix}
-\epigraph{The noblest ambition is that of leaving behind something of permanent value.}{G.H. Hardy\\\textit{A Mathematicians Apology}}
+\epigraph{The noblest ambition is that of leaving behind something of permanent
+value.}{G.H. Hardy\\\textit{A Mathematicians Apology}}
 \input{chapters/appendix}
 
 \bibliographystyle{unsrt}
 \bibliography{refs}
-
 
 \end{document}

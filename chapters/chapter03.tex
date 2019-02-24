@@ -1,210 +1,362 @@
-In this chapter we will present some mathematical necessities that will allow us to discuss our problem at a higher level of rigor and detail. The tools we will need are some partial differential equation theory, elements of functional analysiss, and ideas from the calculus of variations.
+% chktex-file 21
+
+In this chapter we will present some mathematical necessities that will allow us
+to discuss our problem at a higher level of rigor and detail. The tools we will
+need are some partial differential equation theory, elements of functional
+analysis, and ideas from the calculus of variations.
 
 \section{Function Spaces}\label{sec:funspaces}
-Since this thesis is concerned with whether a certain model contains particular solutions, we will need to specify the space in which we are looking for solutions. Are we looking for continuous functions, H\"{o}lder continuous functions, or perhaps even functions that are discontinuous? In this section we will address these questions and motivate the space that is of particular interest.
+Since this thesis is concerned with whether a certain model contains particular
+solutions, we will need to specify the space in which we are looking for
+solutions. Are we looking for continuous functions, H\"{o}lder continuous
+functions, or perhaps even functions that are discontinuous? In this section we
+will address these questions and motivate the space that is of particular
+interest.
 
-In this chapter we will \textit{mostly} work with functions of one variable because, in our Q-Ball work, that is all we need, but all definitions and theorems can be extended to functions of more variables. Most of the time the necessary background, and notation bogs down, and makes harder to see the meaning the definitions and theorems are trying to get at.
+In this chapter we will \textit{mostly} work with functions of one variable
+because, in our Q-Ball work, that is all we need, but all definitions and
+theorems can be extended to functions of more variables. Most of the time the
+necessary background, and notation bogs down, and makes harder to see the
+meaning the definitions and theorems are trying to get at.
 
-We begin with a few definitions that are of utmost importance in order to grasp further concepts. In the work to come, pertaining to Q-Balls we will need a notion of ``size'' that will measure the strength of the solutions. We will here on out assume the underlying structure of a vector space\footnote{If it is not clear such a space is a vector space, we will provide an argument.}.
+We begin with a few definitions that are of utmost importance in order to grasp
+further concepts. In the work to come, pertaining to Q-Balls we will need a
+notion of ``size'' that will measure the strength of the solutions. We will here
+on out assume the underlying structure of a vector space\footnote{If it is not
+clear such a space is a vector space, we will provide an argument.}.
 \begin{definition}\label{def:normspace}
-A vector space $V$ over the field $\mathbb{F}$ equipped with a function $\|\cdot\|: V\to \mathbb{F}$ is said to be a \textbf{normed vector space} if $\|\cdot \|$ satisfies the following properties. 
-\begin{itemize}
-    \item $\|\alpha x\| = |\alpha|\|x\|$\hfill \normalfont{(Absolutely Homogenuous)}
-    \item $\|x\| \geq 0$ and equals 0 if and only if $x = 0$ \hfill \normalfont{(Positive Definite)}
-    \item $\|x + y\| \leq \|x\| + \|y\|$ \hfill \normalfont{(Subadditive)\footnote{Also known as, satisfying the Triangle Inequality.}}
-\end{itemize}
-Where $x,y\in V$ and $\alpha\in\mathbb{F}$.
+    A vector space \(V\) over the field \(\mathbb{F}\) equipped with a function
+    \(\|\cdot\|: V\to \mathbb{F}\) is said to be a \textbf{normed vector space}
+    if \(\|\cdot \|\) satisfies the following properties. 
+    \begin{itemize}
+        \item \(\|\alpha x\| = |\alpha|\|x\|\)\hfill \normalfont{(Absolutely Homogenuous)}
+        \item \(\|x\| \geq 0\) and equals 0 if and only if \(x = 0\) \hfill \normalfont{(Positive Definite)}
+        \item \(\|x + y\| \leq \|x\| + \|y\|\) \hfill \normalfont{(Subadditive)\footnote{Also known as, satisfying the Triangle Inequality.}}
+    \end{itemize}
+    Where \(x,y\in V\) and \(\alpha\in\mathbb{F}\).
 \end{definition}
-With this definition, we see the fundamental ideas or notions of ``length'' embodied. We can now provide a definition which allows one to have a notion of ``direction'' in the space of question.
+With this definition, we see the fundamental ideas or notions of ``length''
+embodied. We can now provide a definition which allows one to have a notion of
+``direction'' in the space of question.
 \begin{definition}\label{def:innerprodspace}
-A vector space $V$ over the field $\mathbb{F}$ equipped with a function $\langle\cdot, \cdot\rangle:V\times V\to \mathbb{F}$ is said to be an \textbf{inner product space} if $\langle\cdot, \cdot\rangle$ satisfies the following properties.
-\begin{itemize}
-    \item $\langle x,y\rangle = \overline{\langle y,x\rangle}$ \hfill \normalfont{(Conjugate Symmetric)}
-    \item $\langle\alpha x + \beta y, z\rangle = \alpha \langle x,z\rangle + \beta\langle y,z\rangle$ \hfill \normalfont{(Linear in first entry)}
-    \item $\langle x,x\rangle\geq 0$ and equals 0 if and only if $x = 0$ \hfill \normalfont{(Positive Definite)}
-\end{itemize}
-Where $x,y,z\in V$ and $\alpha, \beta\in\mathbb{F}$.
+    A vector space \(V\) over the field \(\mathbb{F}\) equipped with a function
+    \(\langle\cdot, \cdot\rangle:V\times V\to \mathbb{F}\) is said to be an
+    \textbf{inner product space} if \(\langle\cdot, \cdot\rangle\) satisfies the
+    following properties.
+    \begin{itemize}
+        \item \(\langle x,y\rangle = \overline{\langle y,x\rangle}\) \hfill \normalfont{(Conjugate Symmetric)}
+        \item \(\langle\alpha x + \beta y, z\rangle = \alpha \langle x,z\rangle + \beta\langle y,z\rangle\) \hfill \normalfont{(Linear in first entry)}
+        \item \(\langle x,x\rangle\geq 0\) and equals 0 if and only if \(x = 0\) \hfill \normalfont{(Positive Definite)}
+    \end{itemize}
+    Where \(x,y,z\in V\) and \(\alpha, \beta\in\mathbb{F}\).
 \end{definition}
-It is important to note here that once an inner product is defined on a vector space, we can immediately define a norm by $\|x\|_{\langle\cdot,\cdot\rangle} = \sqrt{\langle x, x\rangle}$.
+It is important to note here that once an inner product is defined on a vector
+space, we can immediately define a norm by \(\|x\|_{\langle\cdot,\cdot\rangle} = \sqrt{\langle x, x\rangle}\).
 
-The next definition provided allows us to ``fill in the gaps''. To give meaning to this statement look at $\mathbb{R}$. If we build $\mathbb{R}$ starting with the natural numbers, adding in the integers, and again adding in the quotients, then we are left with a set that resembles $\mathbb{R}$, but has lots of missing pieces. To fill those in, we take all Cauchy Sequences i.e., sequences such that for any $\varepsilon >0$ there exists an $N\in\mathbb{N}$ such that for $n,m\geq N$ we have $|a_n - a_m| < \varepsilon$, in $\mathbb{R}$ and add the limits to our existing set. This ``fills in'' the gaps and provides a much nicer space to work with. This motivates the following definition.
+The next definition provided allows us to ``fill in the gaps''. To give meaning
+to this statement look at \(\mathbb{R}\). If we build \(\mathbb{R}\) starting
+with the natural numbers, adding in the integers, and again adding in the
+quotients, then we are left with a set that resembles \(\mathbb{R}\), but has
+lots of missing pieces. To fill those in, we take all Cauchy Sequences
+i.e.\ sequences such that for any \(\varepsilon >0\) there exists an
+\(N\in\mathbb{N}\) such that for \(n,m\geq N\) we have
+\(|a_n - a_m| < \varepsilon\), in \(\mathbb{R}\) and add the limits to our
+existing set. This ``fills in'' the gaps and provides a much nicer space to work
+with. This motivates the following definition.
 \begin{definition}\label{def:complete}
-A normed vector space $(V, \|\cdot\|)$ is \textbf{complete} if all Cauchy sequences converge with respect to the metric $d_{\|\cdot\|}(x,y)\coloneqq\|x - y\|$.
+    A normed vector space \((V, \|\cdot\|)\) is \textbf{complete} if all Cauchy
+    sequences converge with respect to the metric
+    \(d_{\|\cdot\|}(x,y)\coloneqq\|x - y\|\).
 \end{definition}
-Forcing the spaces we work with to be complete allows one to not worry about pedagogical counterexamples that make basic operations and constructions much more tedious and cumbersome. We can now add this condition to Definitions \ref{def:normspace} and \ref{def:innerprodspace} to obtain further restricted spaces.
+Forcing the spaces we work with to be complete allows one to not worry about
+pedagogical counterexamples that make basic operations and constructions much
+more tedious and cumbersome. We can now add this condition to
+Definitions~\ref{def:normspace} and~\ref{def:innerprodspace} to obtain further
+restricted spaces.
 \begin{definition}\label{def:banach}
-A \textbf{Banach Space} is a complete, normed vector space.
+    A \textbf{Banach Space} is a complete, normed vector space.
 \end{definition}
 \begin{definition}
-A \textbf{Hilbert Space} is a complete, inner product space.
+    A \textbf{Hilbert Space} is a complete, inner product space.
 \end{definition}
-It is important to remember that we can define completeness on an innerproduct space, because the inner product gives rise to the norm, which gives rise to the metric $d_{\|\cdot\|}$ defined in Definition \ref{def:complete}.
+It is important to remember that we can define completeness on an innerproduct
+space, because the inner product gives rise to the norm, which gives rise to the
+metric \(d_{\|\cdot\|}\) defined in Definition~\ref{def:complete}.
 
-\subsection{\texorpdfstring{$L^p$}{Lp} spaces}\label{subsec:lp}
-To begin our work with function spaces we introduce one of the most fundamental spaces, the space of Lebesgue integrable functions. In particular, given a measure space $(S,\Sigma, \mu)$\footnote{Here $S$ is the base set, $\Sigma$ is a collections of subsets of $S$ that form a $\sigma$-algebra (a collections of subsets that contain the base set, is closed under complements, and closed under countable unions) and $\mu$ is a function $\mu:\Sigma\to[0,\infty]$ such that $\mu(E)\geq 0$, $\mu(\varnothing) = 0$, $\mu\left(\bigcup_{i\in\mathbb{N}}E_i\right) = \sum_{i\in\mathbb{N}}\mu(E_i)$, and finally we have the conditions that $\mu(S) = 1$.}, for each $p\in[1,\infty)$ we define the Lebesgue norm of a function $f:S\to\mathbb{R}$ as
+\subsection{\texorpdfstring{\(L^p\)}{Lp} spaces}\label{subsec:lp}
+To begin our work with function spaces we introduce one of the most fundamental
+spaces, the space of Lebesgue integrable functions. In particular, given a
+measure space \((S,\Sigma, \mu)\)\footnote{Here \(S\) is the base set,
+\(\Sigma\) is a collections of subsets of \(S\) that form a \(\sigma\)-algebra
+(a collections of subsets that contain the base set, is closed under
+complements, and closed under countable unions) and \(\mu\) is a function
+\(\mu:\Sigma\to[0,\infty]\) such that \(\mu(E)\geq 0\),
+\(\mu(\varnothing) = 0\), \(\mu\left(\bigcup_{i\in\mathbb{N}}E_i\right) = \sum_{i\in\mathbb{N}}\mu(E_i)\),
+and finally we have the conditions that \(\mu(S) = 1\).}, for each
+\(p\in[1,\infty)\) we define the Lebesgue norm of a function % chktex 9
+\(f:S\to\mathbb{R}\) as
 \begin{equation}
-\|f\|_{L^p(S)}^p\coloneqq \int_S|f|^p\dd{\mu}.
+    \|f\|_{L^p(S)}^p\coloneqq \int_S|f|^p\dd{\mu}.
 \end{equation}
-If this value is finite, we write $f\in L^p(S)$. Ideally these functions would form a space with some structure, so that we can add them, and multiply them by scalars, i.e., a vector space.
+If this value is finite, we write \(f\in L^p(S)\). Ideally these functions would
+form a space with some structure, so that we can add them, and multiply them by
+scalars, i.e., a vector space.
 \begin{lemma}
-The set $L^p(\Omega)$ ($p\in[1,\infty)$) with addition and scalar multiplication defined by
-\begin{align}
-(f + g)(x) & \coloneqq f(x) + g(x) \\
-(\alpha f)(x) & \coloneqq \alpha\cdot f(x).
-\end{align}
-forms a vector space.
+    The set \(L^p(\Omega)\) (\(p\in[1,\infty)\)) with addition and scalar % chktex 9
+    multiplication defined by
+    \begin{align}
+        (f + g)(x)    & \coloneqq f(x) + g(x) \\
+        (\alpha f)(x) & \coloneqq \alpha\cdot f(x).
+    \end{align}
+    forms a vector space.
 \end{lemma}
 \begin{proof}
-We begin by showing $\alpha f\in L^p(\Omega)$.
-\begin{align*}
-\|\alpha f\|_{L^p(\Omega)} & = \left(\int_\Omega |\alpha f|^p\dd{\mu}\right)^\frac{1}{p} \\
- & \leq |\alpha|\left(\int_\Omega |f|^p\dd{\mu}\right)^\frac{1}{p}\\
- & = |\alpha|\cdot\|f\|_{L^p(\Omega)} < \infty
-\end{align*}
-Since it's Lebesgue integral is finite, it is also in the space. We know show vector addition also yields a function within $L^p(\Omega)$.
-\begin{align*}
-\|f + g\|_{L^p(\Omega)} & = \left(\int_\Omega |f + g|^p\dd{\mu}\right)^\frac{1}{p} \\
- & \leq \left(\int_\Omega |2\max{(|f|,|g|)}|^p\dd{\mu}\right)^\frac{1}{p} \\
- & = 2\left(\int_\Omega |f|^p\dd{\mu}\right)^\frac{1}{p} \\
- & = 2\|f\|_{L^p(\Omega)} < \infty
-\end{align*}
-Where we have taken $\max{(|f|,|g|)} = |f|$ arbitrarily. The rest of the vector space axioms are satisfied almost trivially, and hence for $p\in[1,\infty)$, we have that $L^p$ is a vector space.
+    We begin by showing \(\alpha f\in L^p(\Omega)\).
+    \begin{align*}
+        \|\alpha f\|_{L^p(\Omega)} & = \left(\int_\Omega |\alpha f|^p\dd{\mu}\right)^\frac{1}{p} \\
+                                   & \leq |\alpha|\left(\int_\Omega |f|^p\dd{\mu}\right)^\frac{1}{p}\\
+                                   & = |\alpha|\cdot\|f\|_{L^p(\Omega)} < \infty
+    \end{align*}
+    Since it's Lebesgue integral is finite, it is also in the space. We know
+    show vector addition also yields a function within \(L^p(\Omega)\).
+    \begin{align*}
+        \|f + g\|_{L^p(\Omega)} & = \left(\int_\Omega |f + g|^p\dd{\mu}\right)^\frac{1}{p} \\
+                                & \leq \left(\int_\Omega |2\max{(|f|,|g|)}|^p\dd{\mu}\right)^\frac{1}{p} \\
+                                & = 2\left(\int_\Omega |f|^p\dd{\mu}\right)^\frac{1}{p} \\
+                                & = 2\|f\|_{L^p(\Omega)} < \infty
+    \end{align*}
+    Where we have taken \(\max{(|f|,|g|)} = |f|\) arbitrarily. The rest of the
+    vector space axioms are satisfied almost trivially, and hence for
+    \(p\in[1,\infty)\), we have that \(L^p\) is a vector space. % chktex 9
 \end{proof}
 
 \begin{remark}
-For $p\in(0,1)$ the space $L^p$ does \textit{not} form a vector space because of the fact that the norm fails to be subadditive.
+    For \(p\in(0,1)\) the space \(L^p\) does \textit{not} form a vector space
+    because of the fact that the norm fails to be subadditive.
 \end{remark}
 
-An extremely important, and I would argue the \textit{best}\footnote{Not subjective whatsoever.} value of $p$ is 2. This is because $L^2$ is a Hilbert space\footnote{Remember this is a complete inner product space, pretty much the best version of a vector space you can imagine.}. The functions that live here are often called square integrable functions and have applications across all areas of mathematics and are extremely prevalent in physics, in particular quantum mechanics.
+An extremely important, and I would argue the \textit{best}\footnote{Not
+subjective whatsoever.} value of \(p\) is 2. This is because \(L^2\) is a
+Hilbert space\footnote{Remember this is a complete inner product space, pretty
+much the best version of a vector space you can imagine.}. The functions that
+live here are often called square integrable functions and have applications
+across all areas of mathematics and are extremely prevalent in physics, in
+particular quantum mechanics.
 
-These functions are extremely important, yet most of the time these functions are not even differentiable. As we will see in Section \ref{sec:consmin} the solutions we wish to work with need to be ``differentiable'' once, in some sense of the word. Thus, the space $L^p$ is much too large, and we need to throw away some.
+These functions are extremely important, yet most of the time these functions
+are not even differentiable. As we will see in Section~\ref{sec:consmin} the
+solutions we wish to work with need to be ``differentiable'' once, in some sense
+of the word. Thus, the space \(L^p\) is much too large, and we need to throw
+away some.
 
 \subsection{Sobolev Spaces}\label{subsec:weakds}
-In this section we introduce the function spaces we will be working in for the following thesis. In order to introduce this space we will first introduce a weaker notion of differentiability that, again, expands our previous notions. Before this, we provide some more fundamental notions.
+In this section we introduce the function spaces we will be working in for the
+following thesis. In order to introduce this space we will first introduce a
+weaker notion of differentiability that, again, expands our previous notions.
+Before this, we provide some more fundamental notions.
 \begin{definition}
-Given a function a topological space $X$ and a continuous function $f:X\to\mathbb{R}$ we define the \textbf{support} of $f$ to be the closure of the set of points in $X$ where the function does not vanish, i.e.,
-\begin{equation}
-\supp{f}\coloneqq \cl{\{x\in X | f(x) \neq 0\}} = \cl{f^{-1}(\mathbb{R}\setminus\{0\})}.
-\end{equation}
+    Given a function a topological space \(X\) and a continuous function
+    \(f:X\to\mathbb{R}\) we define the \textbf{support} of \(f\) to be the
+    closure of the set of points in \(X\) where the function does not vanish, i.e.
+    \begin{equation}
+        \supp{f}\coloneqq \cl{\{x\in X | f(x) \neq 0\}} = \cl{f^{-1}(\mathbb{R}\setminus\{0\})}.
+    \end{equation}
 \end{definition}
-A very important object is then a function which ``lives'' on a ``small'' or ``confined'' subset of the domain. The following definition makes this precise.
+A very important object is then a function which ``lives'' on a ``small'' or
+``confined'' subset of the domain. The following definition makes this precise.
 \begin{definition}
-A function $f:X\to\mathbb{R}$ is said to have \textbf{compact support} if $\supp{f}$ is a compact subset of $X$.
+    A function \(f:X\to\mathbb{R}\) is said to have \textbf{compact support} if
+    \(\supp{f}\) is a compact subset of \(X\).
 \end{definition}
 To illustrate this concept we provide the following example.
 \begin{example}
-Let $f:\mathbb{R}\to\mathbb{R}$ be defined by
-\begin{equation}
-f(x) = \begin{cases}
-g(x) & x\in[a,b] \\
-0 & \text{otherwise}
-\end{cases}
-\end{equation}
-where $g\in\mathrm{C}^0([a,b])$. This is trivially a function of compact support as $\supp{f} = [a,b]\subset\mathbb{R}$ is a compact set.
+    Let \(f:\mathbb{R}\to\mathbb{R}\) be defined by
+    \begin{equation}
+        f(x) = \begin{cases}
+            g(x) & x\in[a,b] \\
+            0    & \text{otherwise}
+        \end{cases}
+    \end{equation}
+    where \(g\in\mathrm{C}^0([a,b])\). This is trivially a function of compact
+    support as \(\supp{f} = [a,b]\subset\mathbb{R}\) is a compact set.
 \end{example}
 
 \begin{example}
-Let $f:\mathbb{R}\to\mathbb{R}$ be defined by $x\mapsto x^2$. It is easy to to see $\supp{f} = \mathbb{R}\setminus \{0\}$. This set is not only open, but also unbounded and hence not compact in $\mathbb{R}$. Hence this map does not have compact support.
+    Let \(f:\mathbb{R}\to\mathbb{R}\) be defined by \(x\mapsto x^2\). It is easy
+    to to see \(\supp{f} = \mathbb{R}\setminus \{0\}\). This set is not only
+    open, but also unbounded and hence not compact in \(\mathbb{R}\). Hence this
+    map does not have compact support.
 \end{example}
 
-An important characterization of functions with compact support is their behavior on or near the boundary of the compact subset on which the function lives. We provide the following lemma without proof.
+An important characterization of functions with compact support is their
+behavior on or near the boundary of the compact subset on which the function
+lives. We provide the following lemma without proof.
 
 \begin{lemma}\label{lem:comsupp}
-Suppose $f:\mathbb{R}\to\mathbb{R}$ is a continuous function compactly supported on $U\subset\mathbb{R}$. Then $f$ vanishes on the boundary of $U$ i.e., $f|_{\partial U} = 0$. 
+    Suppose \(f:\mathbb{R}\to\mathbb{R}\) is a continuous function compactly
+    supported on \(U\subset\mathbb{R}\). Then \(f\) vanishes on the boundary of
+    \(U\) i.e., \(f|_{\partial U} = 0\). 
 \end{lemma}
 
+Before the definition we introduce two new spaces. Some of the ``nicest''
+functions are ones that we can differentiate as many times as we'd like. To
+denote infinitely differentiable functions, we have \(\mathrm{C}^\infty(U)\) for
+some open subset \(U\subset \mathbb{R}\). A subset of these functions are the
+ones that vanish on the boundary of \(U\), i.e., by Lemma~\ref{lem:comsupp} they
+have compact support and this is denoted \(\mathrm{C}_c^\infty(U)\).
 
-Before the definition we introduce two new spaces. Some of the ``nicest'' functions are ones that we can differentiate as many times as we'd like. To denote infinitely differentiable functions, we have $\mathrm{C}^\infty(U)$ for some open subset $U\subset \mathbb{R}$. A subset of these functions are the ones that vanish on the boundary of $U$, i.e., by Lemma \ref{lem:comsupp} they have compact support and this is denoted $\mathrm{C}_c^\infty(U)$.
-
-In Subsection \ref{subsec:lp} we saw $L^p$ spaces. We now introduce a slightly larger set of functions called $L^p_\text{loc}(U)$ to mean functions who are locally summable on $U$. This means functions which are Lebesgue integrable on all compact subsets of $U$. To fully understand this space we provide an example.
+In Subsection~\ref{subsec:lp} we saw \(L^p\) spaces. We now introduce a slightly
+larger set of functions called \(L^p_\text{loc}(U)\) to mean functions who are
+locally summable on \(U\). This means functions which are Lebesgue integrable on
+all compact subsets of \(U\). To fully understand this space we provide an
+example.
 
 \begin{example}
-The space $L^1(\mathbb{R})$ is defined by functions that satisfy
-\begin{equation*}
-\int_\mathbb{R}|f(x)|\dd{x} < \infty.
-\end{equation*}
-In order for a function $\phi$ to satisfy this property, it must decay to 0 as $|x|\to\infty$. The space $L^1_\text{loc}(\mathbb{R})$ is much larger. Note compact subsets of $\mathbb{R}$ are all of the form $[a,b]$ for some $a,b\in\mathbb{R}$. Thus in order for $\phi$ to be in $L^1_\text{loc}(\mathbb{R})$ we must have \begin{equation*}
-\int_a^b|\phi(x)|\dd{x} < \infty
-\end{equation*}
-for all $a,b\in\mathbb{R}$. This condition is much less restrictive as we now allow for objects such as constant functions, periodic functions, and any continuous function defined on $\mathbb{R}$.
+    The space \(L^1(\mathbb{R})\) is defined by functions that satisfy
+    \begin{equation*}
+        \int_\mathbb{R}|f(x)|\dd{x} < \infty.
+    \end{equation*}
+    In order for a function \(\phi\) to satisfy this property, it must decay to
+    0 as \(|x|\to\infty\). The space \(L^1_\text{loc}(\mathbb{R})\) is much
+    larger. Note compact subsets of \(\mathbb{R}\) are all of the form \([a,b]\)
+    for some \(a,b\in\mathbb{R}\). Thus in order for \(\phi\) to be in
+    \(L^1_\text{loc}(\mathbb{R})\) we must have
+    \begin{equation*}
+        \int_a^b|\phi(x)|\dd{x} < \infty
+    \end{equation*}
+    for all \(a,b\in\mathbb{R}\). This condition is much less restrictive as we
+    now allow for objects such as constant functions, periodic functions, and
+    any continuous function defined on \(\mathbb{R}\).
 \end{example}
 
 With these new spaces we can now define our weakened notion of derivative.
 \begin{definition}
-If $f,g \in L^1_\mathrm{loc}(U)$, we call $g$ the \textbf{weak derivative} of $f$ provided
-\begin{equation}
-\int_U f\varphi'\dd{x} = -\int_Ug\varphi\dd{x}
-\end{equation}
-for all $\varphi\in\mathrm{C}_c^\infty(U)$.
+    If \(f,g \in L^1_\mathrm{loc}(U)\), we call \(g\) the
+    \textbf{weak derivative} of \(f\) provided
+    \begin{equation}
+        \int_U f\varphi'\dd{x} = -\int_U g\varphi\dd{x}
+    \end{equation}
+    for all \(\varphi\in\mathrm{C}_c^\infty(U)\).
 \end{definition}
-This definition comes from integration by parts $\int u\dd{v} = uv|_\partial - \int v\dd{u}$ where the function we are integrating against, in our case $\varphi'$ vanishes on the boundary. Thus we can throw away the boundary term and we are left with another integral. This sense of derivative is much weaker than ordinary derivatives and allows us to weakly derive things like step functions or ramp functions to say the least. We can now easily prove the uniqueness of these objects.
+This definition comes from integration by parts \(\int u\dd{v} = uv|_\partial - \int v\dd{u}\)
+where the function we are integrating against, in our case \(\varphi'\) vanishes
+on the boundary. Thus we can throw away the boundary term and we are left with
+another integral. This sense of derivative is much weaker than ordinary
+derivatives and allows us to weakly derive things like step functions or ramp
+functions to say the least. We can now easily prove the uniqueness of these
+objects.
 \begin{lemma}
-The weak derivative of $f$, should it exist, is unique.
+    The weak derivative of \(f\), should it exist, is unique.
 \end{lemma}
 \begin{proof}
-Let us assume $g_1, g_2$ are both weak derivatives of $f$. Then we have
-\begin{equation}
-\int_U f\varphi'\dd{x} = -\int_U g_1\varphi\dd{x} = -\int_U g_2\varphi\dd{x}
-\end{equation}
-for all $\varphi\in \mathrm{C}_c^\infty(U)$ and hence, by linearity of the Lebesgue integral,
-\begin{equation}
-\int_U\left(g_1 - g_2\right)\varphi\dd{x} = 0
-\end{equation}
-and thus $g_1\overset{\text{a.e.}}{=}g_2$\footnote{The ``a.e.'' over the ``$=$'' means these functions are equal \textbf{a}lmost \textbf{e}verywhere, or put differently, they are the same in the integral sense, but not necessarily pointwise.}.
+    Let us assume \(g_1, g_2\) are both weak derivatives of \(f\). Then we have
+    \begin{equation}
+        \int_U f\varphi'\dd{x} = -\int_U g_1\varphi\dd{x} = -\int_U g_2\varphi\dd{x}
+    \end{equation}
+    for all \(\varphi\in \mathrm{C}_c^\infty(U)\) and hence, by linearity of the
+    Lebesgue integral,
+    \begin{equation}
+        \int_U\left(g_1 - g_2\right)\varphi\dd{x} = 0
+    \end{equation}
+    and thus \(g_1\overset{\text{a.e.}}{=}g_2\)\footnote{The ``a.e.'' over the
+    ``\(=\)'' means these functions are equal \textbf{a}lmost
+    \textbf{e}verywhere, or put differently, they are the same in the integral
+    sense, but not necessarily pointwise.}.
 \end{proof}
 
-With the basic ideas of weak differentiability we can construct the Sobolev Space. Remember $L^p$ spaces were far too big and contained functions we wished not to consider. Thus in defining Sobolev spaces we will first start in $L^p$ and require some orders of weak derivatives also lie in various $L^p$ spaces.
+With the basic ideas of weak differentiability we can construct the Sobolev
+Space. Remember \(L^p\) spaces were far too big and contained functions we
+wished not to consider. Thus in defining Sobolev spaces we will first start in
+\(L^p\) and require some orders of weak derivatives also lie in various \(L^p\)
+spaces.
 \begin{definition}
-The \textbf{Sobolev Space} $W^{k,p}(U)$ ($k,p\in\mathbb{N}$) consists of functions $f\in L^p_\mathrm{loc}(U)$ such that $f^{(i)}$ exists in the weak sense and also belongs to $L^p(U)$.
+    The \textbf{Sobolev Space} \(W^{k,p}(U)\) (\(k,p\in\mathbb{N}\)) consists of
+    functions \(f\in L^p_\mathrm{loc}(U)\) such that \(f^{(i)}\) exists in the
+    weak sense and also belongs to \(L^p(U)\).
 \end{definition}
 This space admits a natural norm that makes it a Banach space (\ref{def:banach}).
 \begin{equation}
-\|f\|_{W^{k,p}(U)}^p \coloneqq \sum_{i = 0}^k\int_U |f^{(i)}|^p\dd{x}
+    \|f\|_{W^{k,p}(U)}^p \coloneqq \sum_{i = 0}^k\int_U |f^{(i)}|^p\dd{x}
 \end{equation}
-An immediate important subset of the Sobolev space is $W^{k,p}_0(U)$ which denotes the closure of $\mathrm{C}^\infty_c(U)$ in $W^{k,p}(U)$. Another particularly interesting case is when $p = 2$, and in this case we write $H^k(U) = W^{k,2}(U)$ where we use the letter $H$ because this space inherits a completeness, and an inner product from $L^2$ and hence it is a Hilbert space.
+An immediate important subset of the Sobolev space is \(W^{k,p}_0(U)\) which
+denotes the closure of \(\mathrm{C}^\infty_c(U)\) in \(W^{k,p}(U)\). Another
+particularly interesting case is when \(p = 2\), and in this case we write
+\(H^k(U) = W^{k,2}(U)\) where we use the letter \(H\) because this space
+inherits a completeness, and an inner product from \(L^2\) and hence it is a
+Hilbert space.
 
 \section{The Calculus of Variations}\label{sec:cov}
-In this section we present the underlying ideas that allow us to solve (\ref{eq:DE}). This method provides an alternative way to view partial differential equations that is often insightful and lends itself to Lagrangian systems.
+In this section we present the underlying ideas that allow us to solve
+(\ref{eq:DE}). This method provides an alternative way to view partial
+differential equations that is often insightful and lends itself to Lagrangian
+systems.
 
 The basic idea of partial differential equations is to solve
 \begin{equation}\label{eq:PDEprob}
-D[u] = 0
+    D[u] = 0
 \end{equation}
-where $D$ is some differential operator. The calculus of variations treats this differential operator as the ``derivative'' of some functional $I[\cdot]$, i.e., $I'[u] = A[u]$. The fundamental problem of PDE's (\ref{eq:PDEprob}) is then written as $I'[u] = 0$. The advantage this method has over attempting to directly solve PDE's is that often times finding critical points may be easier than a direct proof of existence of solutions.
+where \(D\) is some differential operator. The calculus of variations treats
+this differential operator as the ``derivative'' of some functional
+\(I[\cdot]\), i.e., \(I'[u] = A[u]\). The fundamental problem of PDE's
+(\ref{eq:PDEprob}) is then written as \(I'[u] = 0\). The advantage this method
+has over attempting to directly solve PDE's is that often times finding critical
+points may be easier than a direct proof of existence of solutions.
 
 To better understand the basic idea of this we provide an illustrative example.
 \begin{example}
-Suppose we wish to solve $u'' = \sin{u}$ for some function $u\in\mathrm{C}^2(\mathbb{R})$. Directly this problem can be very difficult, so let us try and find a functional, whose derivative represents the operator $A = \partial_x^2 - \sin(\cdot)$. If we define
-\begin{equation}
-I[u] = \int \frac{1}{2}(u')^2 - \cos{u}\dd{x}
-\end{equation}
-then take its functional derivative as we learned in Chapter \ref{chap:fields} we see the Euler-Lagrange equations of this functional yields the original partial differential equation. Hence if we are able to find minima of $I[\cdot]$, then we have found solutions to the original problem.
+    Suppose we wish to solve \(u'' = \sin{u}\) for some function
+    \(u\in\mathrm{C}^2(\mathbb{R})\). Directly this problem can be very
+    difficult, so let us try and find a functional, whose derivative represents
+    the operator \(A = \partial_x^2 - \sin(\cdot)\). If we define
+    \begin{equation}
+        I[u] = \int \frac{1}{2}(u')^2 - \cos{u}\dd{x}
+    \end{equation}
+    then take its functional derivative as we learned in
+    Chapter~\ref{chap:fields} we see the Euler-Lagrange equations of this
+    functional yields the original partial differential equation. Hence if we
+    are able to find minima of \(I[\cdot]\), then we have found solutions to the
+    original problem.
 \end{example}
-In this example we found $I$ to be the integral of another function. As this is normally the case, we denote by $L$, the ``\textit{Lagrangian}'' of such a functional. Thus for the above example we have $L = \frac{1}{2}(u')^2 - \cos{u}$. This function is called the Lagrangian simply because resembles the action equation we saw in Equation (\ref{eq:action}).
+In this example we found \(I\) to be the integral of another function. As this
+is normally the case, we denote by \(L\), the ``\textit{Lagrangian}'' of such a
+functional. Thus for the above example we have \(L = \frac{1}{2}(u')^2 - \cos{u}\).
+This function is called the Lagrangian simply because resembles the action
+equation we saw in Equation (\ref{eq:action}).
 
-\subsection{When does \texorpdfstring{$\inf = \min$}{inf = min}?}
-In this section we study when a functional attains its minima. If it does, then $\inf = \min$, so really you can stop reading this section now since I answered the main question. In this section we will study further properties which ensure a functional does attain its minima.
+\subsection{When does \texorpdfstring{\(\inf = \min\)}{inf = min}?}
+In this section we study when a functional attains its minima. If it does, then
+\(\inf = \min\), so really you can stop reading this section now since I
+answered the main question. In this section we will study further properties
+which ensure a functional does attain its minima.
 
-It is easy to see that given, even an infinitely differentiabl function, it need not attain its minima as seen in $f(x) = \e^x$. Thus, in order to force it to attain its minima we must control the function at ``large'' input. A way to do this is to say, as $|x|\to \infty$ we also have $f(x)\to +\infty$. The following definition generalizes this to functionals. 
+It is easy to see that given, even an infinitely differentiabl function, it need
+not attain its minima as seen in \(f(x) = \e^x\). Thus, in order to force it to
+attain its minima we must control the function at ``large'' input. A way to do
+this is to say, as \(|x|\to \infty\) we also have \(f(x)\to +\infty\). The
+following definition generalizes this to functionals. 
 
 \begin{definition}\label{def:coercive}
-A functional $I$ with Lagrangian $L$ is said to be coercive if, for a given $q$, there exist constants $\alpha$ and $\beta$ such that
-\begin{equation}
-L(f', f, x) \geq \alpha |f'|^q - \beta.
-\end{equation}
+    A functional \(I\) with Lagrangian \(L\) is said to be coercive if, for a
+    given \(q\), there exist constants \(\alpha\) and \(\beta\) such that
+    \begin{equation}
+        L(f', f, x) \geq \alpha |f'|^q - \beta.
+    \end{equation}
 \end{definition}
-This definition immediately leads to an alternative, but equivalent description in terms of the functional.
+This definition immediately leads to an alternative, but equivalent description
+in terms of the functional.
 \begin{lemma}
-A functional is coercive if and only if it satisfies a coercivity condition i.e.,
-\begin{equation}
-I[f] \geq \delta \|f'\|^q_{L^q(U)} - \gamma
-\end{equation}
+    A functional is coercive if and only if it satisfies a coercivity condition
+    i.e.
+    \begin{equation}
+        I[f] \geq \delta \|f'\|^q_{L^q(U)} - \gamma
+    \end{equation}
 \end{lemma}
 \begin{proof}
-To show these are equivalent, we simply integrate the Lagrangian and use the inequality.
-\begin{align*}
-I[f] & = \int_U L(f',f,x)\dd{x} \\
- & \geq \int_U \alpha |f'|^q - \beta \dd{x} \\
- & = \delta\|f'\|_{L^q(U)}^q - \gamma \qedhere
-\end{align*}
+    To show these are equivalent, we simply integrate the Lagrangian and use the
+    inequality.
+    \begin{align*}
+        I[f] & = \int_U L(f',f,x)\dd{x} \\
+             & \geq \int_U \alpha |f'|^q - \beta \dd{x} \\
+             & = \delta\|f'\|_{L^q(U)}^q - \gamma \qedhere
+    \end{align*}
 \end{proof}

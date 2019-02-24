@@ -10,4 +10,5 @@
 *.blg
 *.run.xml
 *.fdb_latexmk
+*.synctex.gz
 *.pdf

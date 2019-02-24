@@ -1,45 +1,118 @@
-In this chapter we will motivate the problem studied in this thesis by means of providing historical context, as well as recent developments that are related to the work done here.
+In this chapter we will motivate the problem studied in this thesis by means of
+providing historical context, as well as recent developments that are related
+to the work done here.
 
 \section{Historical Context}\label{sec:hist}
-The story of Q-Balls begins in 1834 with a much more basic study of waves and Scottish naval engineer John Scott Russell. Russell worked experimenting at the Union Canal where he attempted to to measure the relationship between the speed of a boat and its propelling force (which oftentimes were horses on land next to the canal). These measurements would allow one to then convert from horse power to steam power. One day while Russell was working he noted a rope had caught and caused the boat to \cite{russellsoliton}
+The story of Q-Balls begins in 1834 with a much more basic study of waves and
+Scottish naval engineer John Scott Russell. Russell worked experimenting at the
+Union Canal where he attempted to to measure the relationship between the speed
+of a boat and its propelling force (which oftentimes were horses on land next
+to the canal). These measurements would allow one to then convert from horse
+power to steam power. One day while Russell was working he noted a rope had
+caught and caused the boat to~\cite{russellsoliton}
 \begin{displayquote}
-suddenly stop – not so the mass of water in the channel which it had put in motion; it accumulated round the prow of the vessel in a state of violent agitation, then suddenly leaving it behind, rolled forward with great velocity, assuming the form of a large solitary elevation, a rounded, smooth and well defined heap of water, which continued its course along the channel without change of form or diminution of speed.
+suddenly stop – not so the mass of water in the channel which it had put in
+motion; it accumulated round the prow of the vessel in a state of violent
+agitation, then suddenly leaving it behind, rolled forward with great velocity,
+assuming the form of a large solitary elevation, a rounded, smooth and well
+defined heap of water, which continued its course along the channel without
+change of form or diminution of speed.
 \end{displayquote}
-This caught Russell's attention and he followed it on horseback for nearly 2 miles before it became lost in the windings of the channel. While chasing the wave he noted an important fact that the solitary wave preserved its shape as it moved down the canal. So fascinated with what he had seen, Russell built a tank to further study this phenomenon. Over the next ten years he would study these objects and he was able to demonstrate they following qualities.
+This caught Russell's attention and he followed it on horseback for nearly 2
+miles before it became lost in the windings of the channel. While chasing the
+wave he noted an important fact that the solitary wave preserved its shape as
+it moved down the canal. So fascinated with what he had seen, Russell built a
+tank to further study this phenomenon. Over the next ten years he would study
+these objects and he was able to demonstrate they following qualities.
 \begin{itemize}
-    \item These waves were stable and could travel long distances\footnote{Waves you might find at a beach tend to flatten out over time, or peak and topple over.}
-    \item The speed of the wave depends on the on the height of the wave and depth of the canal as $v = \sqrt{g(d + h)}$
-    \item If a wave is too big for the depth of the water, it splits into two or more solitary waves
+    \item These waves were stable and could travel long
+          distances\footnote{Waves you might find at a beach tend to flatten
+          out over time, or peak and topple over.}
+    \item The speed of the wave depends on the on the height of the wave and
+          depth of the canal as \(v = \sqrt{g(d + h)}\)
+    \item If a wave is too big for the depth of the water, it splits into two
+          or more solitary waves
     \item Solitary waves cross each other ``without change of any kind''
 \end{itemize}
-As with many other great discoveries, Russell's work was not taken seriously by the scientific community at the time because his results were not reproducible by means of Newtonian hydrodynamics.
+As with many other great discoveries, Russell's work was not taken seriously by
+the scientific community at the time because his results were not reproducible
+by means of Newtonian hydrodynamics.
 
-Nearly 60 years passed before the idea of a solitary wave became popular when in 1895 Korteweg and de Vries \cite{KDV} published a theory of shallow water waves that reproduced Russell's observations and essential qualities. In particular they found the partial differential equation
+Nearly 60 years passed before the idea of a solitary wave became popular when
+in 1895 Korteweg and de Vries~\cite{KDV} published a theory of shallow water
+waves that reproduced Russell's observations and essential qualities. In
+particular they found the partial differential equation
 \begin{equation}
-\pdv{u}{t} + \pdv[3]{u}{x} - 6 u \pdv{u}{x} = 0
+    \pdv{u}{t} + \pdv[3]{u}{x} - 6 u \pdv{u}{x} = 0
 \end{equation}
-which possessed solutions that fit Russell's criteria nearly exactly. This equation possesses a solution which maintains its shape because of the simple fact that the dispersive $\pdv[3]{u}{x}$ term coordinates to cancel out the effects from the nonlinear $u\pdv{u}{x}$ term. Along with this discovery, about 30 years later from the geometry of negatively curved surfaces \cite{curvedsurf}, arose the equation
+which possessed solutions that fit Russell's criteria nearly exactly. This
+equation possesses a solution which maintains its shape because of the simple
+fact that the dispersive \(\pdv[3]{u}{x}\) term coordinates to cancel out the
+effects from the nonlinear \(u\pdv{u}{x}\) term. Along with this discovery,
+about 30 years later from the geometry of negatively curved
+surfaces~\cite{curvedsurf}, arose the equation
 \begin{equation}
-\pdv[2]{u}{x}{t} = \sin{u}
+    \pdv[2]{u}{x}{t} = \sin{u}
 \end{equation}
 and shortly after the equation
 \begin{equation}
-\pdv[2]{u}{x} - \pdv[2]{u}{t} = \sin{u}
+    \pdv[2]{u}{x} - \pdv[2]{u}{t} = \sin{u}
 \end{equation}
-coming from solid state physics \cite{sinegordon} were both found to have solutions that possessed solitary wave solutions. Around this point the term ``soliton'' was coined because of their particle like nature, that is their ability to maintain their shape as they propagate, and their interaction dynamics.
+coming from solid state physics~\cite{sinegordon} were both found to have
+solutions that possessed solitary wave solutions. Around this point the term
+``soliton'' was coined because of their particle like nature, that is their
+ability to maintain their shape as they propagate, and their interaction
+dynamics.
 
-As we have seen, solitons arise from many different areas of mathematics, physics and engineering. As we build richer and more complete models of the universe, and parts of it, we often run into nonlinearities which have the possibility of yielding soliton solutions should the right conditions be met. For this reason solitons are an important object to fully understand and study. As we will see they lead to rich areas of study for both mathematicians, physicists, and engineers as they play a role in mathematical frameworks, physical theories, and have many practical applications.
+As we have seen, solitons arise from many different areas of mathematics,
+physics and engineering. As we build richer and more complete models of the
+universe, and parts of it, we often run into nonlinearities which have the
+possibility of yielding soliton solutions should the right conditions be met.
+For this reason solitons are an important object to fully understand and study.
+As we will see they lead to rich areas of study for both mathematicians,
+physicists, and engineers as they play a role in mathematical frameworks,
+physical theories, and have many practical applications.
 
 \section{Q-Balls}\label{sec:qballintro}
-Now that we have a basic understanding of a soliton, we can can ask if there is some sort of classification that we can do. Are all solitons essentially the same, or do some solitons arise from fundamentally different places than others?
+Now that we have a basic understanding of a soliton, we can can ask if there is
+some sort of classification that we can do. Are all solitons essentially the
+same, or do some solitons arise from fundamentally different places than others?
 
-The answer is of course yes, and at this point we have two main categories of solitons; \textit{topological solitons} or \textit{topological defects}, and \textit{non-topological solitons}. As we noted in the previous section, solitons are stable and maintain their shape. Topological solitons inherit their stability from, not surprisingly, topological arguments. Technically, these soliton solutions are homotopically distinct from the vacuum state \cite{nakahara} and hence cannot be deformed into the trivial solution. This inability to deform them lends them a stability against decay. Non-topological solitons however are objects which are stabilised by other means. As is often the case, non-topological solitons are stabilised by their ``Noether Charge'' which we will learn about in Chapter \ref{chap:fields}. This charge stabilises them against decay and allows them to maintain their shape.
+The answer is of course yes, and at this point we have two main categories of
+solitons; \textit{topological solitons} or \textit{topological defects}, and
+\textit{non-topological solitons}. As we noted in the previous section,
+solitons are stable and maintain their shape. Topological solitons inherit
+their stability from, not surprisingly, topological arguments. Technically,
+these soliton solutions are homotopically distinct from the vacuum
+state~\cite{nakahara} and hence cannot be deformed into the trivial solution.
+This inability to deform them lends them a stability against decay.
+Non-topological solitons however are objects which are stabilised by other
+means. As is often the case, non-topological solitons are stabilised by their
+``Noether Charge'' which we will learn about in Chapter~\ref{chap:fields}. This
+charge stabilises them against decay and allows them to maintain their shape.
 
-While topological defects are extremely important, and play a role in many quantum field theories, this thesis is concerned with non-topological solitons.
+While topological defects are extremely important, and play a role in many
+quantum field theories, this thesis is concerned with non-topological solitons.
 
-The history of Q-Balls begins with the great physicist Sidney Coleman and his paper ``Q-Balls'' \cite{coleman}, written in 1985. In this paper Coleman lays the groundwork for the existence of Q-Balls and their stability against decay and perturbations. Since this pioneering work there has been an enormous amount of work done pertaining to Q-Balls and their properties, and is of course not just limited to \cite{qball1,qball2,qball3,qball4,qball5,qball6,qball7,qball8,qball9}.
+The history of Q-Balls begins with the great physicist Sidney Coleman and his
+paper ``Q-Balls''~\cite{coleman}, written in 1985. In this paper Coleman lays
+the groundwork for the existence of Q-Balls and their stability against decay
+and perturbations. Since this pioneering work there has been an enormous amount
+of work done pertaining to Q-Balls and their properties, and is of course not
+just limited
+to~\cite{qball1,qball2,qball3,qball4,qball5,qball6,qball7,qball8,qball9}.
 
 \section{Applications}\label{sec:apps}
-Since Coleman's first paper Q-Balls have celebrated much research and activity. Besides research into their properties, Q-Balls have been proposed as models of new physics in many areas.
+Since Coleman's first paper Q-Balls have celebrated much research and activity.
+Besides research into their properties, Q-Balls have been proposed as models of
+new physics in many areas.
 
-In Alexander Kusenko's work \cite{SUSY} Q-Balls are shown to exist in Supersymmetric generalizations of the Standard Model of Particle Physics (one of the leading theories to go beyond the standard model). In this paper Kusenko shows how Q-Balls could have been created at a very early time in our universe ($\sim1$s). He then goes on to discuss the possible cosmological ramifications, and in \cite{darkmatter} Kusenko and Shaposhnikov propose Q-Balls as a candidate for Dark Matter. In \cite{baryogen,baryogen2}, we even see Q-Balls aiding in the explanation of baryogenisis.\footnote{The unkown process that produced so many more baryons (matter), than antibaryons (antimatter).}
+In Alexander Kusenko's work~\cite{SUSY} Q-Balls are shown to exist in
+Supersymmetric generalizations of the Standard Model of Particle Physics (one
+of the leading theories to go beyond the standard model). In this paper Kusenko
+shows how Q-Balls could have been created at a very early time in our universe
+(\(\sim1\)s). He then goes on to discuss the possible cosmological ramifications,
+and in~\cite{darkmatter} Kusenko and Shaposhnikov propose Q-Balls as a candidate
+for Dark Matter. In~\cite{baryogen,baryogen2}, we even see Q-Balls aiding in
+the explanation of baryogenisis.\footnote{The unkown process that produced so
+many more baryons (matter), than antibaryons (antimatter).}
