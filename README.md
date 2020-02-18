@@ -15,10 +15,31 @@ solitons.
 
 ## What's this all about
 
-So I wrote and submitted my thesis over a year ago, but I'm just now putting it
+So I wrote and submitted my undergraduate thesis in the spring semester of 2017, but I'm just now putting it
 online. When I was writing it I would have loved to have come across other
 undergraduate theses to kind of use as a basis or just provide some expectations
-of the level they typically are (not that they can't vary).
+of the level at which they typically are (not that they can't vary).
 
 Also the nyu-tandon(/poly) thesis template isn't even online, so if anyone needs
 it they can not get it from here and just delete all my stuff :).
+
+## Printing
+
+In order to graduate I also had to get physical copies of the thesis printed. I
+printed four copies in the university library, and took them to [Henry Bookbinding Co](https://www.yelp.com/biz/henry-bookbinding-new-york)
+to get them bound. The guy there (presumably Henry?) is absolutely amazing, and
+has an amazing workshop. I think I paid $50 for each copy (which the university
+nor department would cover) and gave them to
+
+ 1. University Libary
+ 2. My thesis advisor
+ 3. My parents
+
+after getting them all signed by Prof. Luciano Medina. Here's what the final copies looked like.
+
+
+<img src="thesis-front.jpg" alt="drawing" width="400"/>
+
+<img src="thesis-side.jpg" alt="drawing" width="400"/>
+
+If I got to choose, I would have printed it on smaller paper so it was a bit thicker, and less cumbersome to hold/carry. Maybe next time.
