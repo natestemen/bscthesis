@@ -4,8 +4,8 @@ In this thesis we study the dynamics of a complex scalar field with a
 nonrenormalizable potential. In particular we study the existence of the
 non-topological soliton solutions known as Q-Balls. These objects have been
 proposed as candidates to solve the present baryon asymmetry, and arise in
-supersymetric theories, as well as abelian gauge theories, non-abelian gauge
-theores, non-commutative complex scalar field theories, etc. Formulating the
+supersymmetric theories, as well as abelian gauge theories, non-abelian gauge
+theories, non-commutative complex scalar field theories, etc. Formulating the
 existence problem using constrained minimization allows for this approach to
 translate easily into the numerical work that follows. With this framework the
 computation of soliton profiles, along with the associated angular momentum
@@ -31,7 +31,7 @@ to get them bound. The guy there (presumably Henry?) is absolutely amazing, and
 has an amazing workshop. I think I paid $50 for each copy (which the university
 nor department would cover) and gave them to
 
- 1. University Libary
+ 1. University Library
  2. My thesis advisor
  3. My parents
 
