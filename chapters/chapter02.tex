@@ -17,10 +17,10 @@ where the integral is taken over the path from the initial state of the system,
 to the final state of the system and \(L\) is the Lagrangian of the given
 system. More precisely, the action \(S\) has domain
 \(\mathrm{C}^1(\mathbb{R})\)\footnote{It is risky business to satisfy this
-domain as oftentimes is the case that in application it is disregarded and new
-spaces are taken as domains. However here we specify
-\(\mathrm{C}^1(\mathbb{R})\) because of Theorem~\ref{th:actionexist} given in
-Appendix~\ref{chap:appendix}.} and range \(\mathbb{R}\) and hence
+    domain as oftentimes is the case that in application it is disregarded and new
+    spaces are taken as domains. However here we specify
+    \(\mathrm{C}^1(\mathbb{R})\) because of Theorem~\ref{th:actionexist} given in
+    Appendix~\ref{chap:appendix}.} and range \(\mathbb{R}\) and hence
 \(S:\mathrm{C}^1(\mathbb{R})\to \mathbb{R}\) is a functional and should, more
 formally, be written
 \begin{equation}\label{eq:actionFunc}
@@ -45,7 +45,7 @@ where writing down an equation of motion is oftentimes difficult or impossible.
 Let our system be parametrized by coordinates \(q_i\) with corresponding
 velocities \(\dot{q}_i\) with \(i\in\{1,2,\ldots,n\}\). We say
 \(F(q_i, \dot{q}_i, t)\) is a \textit{conserved quantity}, or \textit{constant
-of motion} if it's total time derivative vanishes, i.e.,
+    of motion} if it's total time derivative vanishes, i.e.,
 \begin{equation}\label{eq:constantmotion}
     \dv{F}{t} = \pdv{F}{t} + \sum_{i = 1}^n \pdv{F}{q_i}\dv{q_i}{t} + \pdv{F}{\dot{q}_i}\dv{\dot{q}_i}{t} = 0
 \end{equation}
@@ -64,7 +64,7 @@ such that \(Q_i(t, 0) = q_i(t)\). This transformation is said to be a
 
 \begin{theorem}[Noether's Theorem]\label{noetherian}
     For each such symmetry transformation as defined in in (\ref{eq:symmetry}),
-there exists a corresponding conserved quantity.
+    there exists a corresponding conserved quantity.
 \end{theorem}
 \begin{proof}
     Expanding the symmetry definition (\ref{eq:symmetry}) we have
@@ -74,9 +74,9 @@ there exists a corresponding conserved quantity.
     This holds for all \(s\), and in particular \(s = 0\). Thus, using the fact
     that \(Q_i(t,0) = q_i(t)\), we have
     \begin{align}
-        0 = \left.\pdv{L}{s}\right|_{s = 0} & = \left.\pdv{L}{q_i}\pdv{Q_i}{s}\right|_{s = 0} + \left.\pdv{L}{\dot{q}_i}\pdv{\dot{Q}_i}{s}\right|_{s = 0} \\
-        & = \left.\dv{t}\left(\pdv{L}{\dot{q}_i}\right)\pdv{Q_i}{s}\right|_{s = 0} + \left.\pdv{L}{\dot{q}_i}\pdv{\dot{Q}_i}{s}\right|_{s = 0} \\
-        & = \dv{t}\left.\left(\pdv{L}{\dot{q}_i}\pdv{Q_i}{s}\right|_{s = 0}\right)
+        0 = \left.\pdv{L}{s}\right|_{s = 0} & = \left.\pdv{L}{q_i}\pdv{Q_i}{s}\right|_{s = 0} + \left.\pdv{L}{\dot{q}_i}\pdv{\dot{Q}_i}{s}\right|_{s = 0}                          \\
+                                            & = \left.\dv{t}\left(\pdv{L}{\dot{q}_i}\right)\pdv{Q_i}{s}\right|_{s = 0} + \left.\pdv{L}{\dot{q}_i}\pdv{\dot{Q}_i}{s}\right|_{s = 0} \\
+                                            & = \dv{t}\left.\left(\pdv{L}{\dot{q}_i}\pdv{Q_i}{s}\right|_{s = 0}\right)
     \end{align}
     Since this is true for all \(i\), and by linearity of the time derivative we
     have conservation of \(\sum_{i = 1}^n \pdv{L}{\dot{q}_i}\pdv{Q_i}{s} = \pdv{L}{\dot{\mathbf{q}}}\cdot\pdv{\mathbf{Q}}{s}\).
@@ -94,20 +94,20 @@ generalization of this theorem to deal with fields).
         \sum_{i = 1}^n\pdv{L}{\dot{\mathbf{r}}_i}\cdot\mathbf{n} = \sum_{i = 1}^n \mathbf{p}_i\cdot\mathbf{n} = \mathbf{P}\cdot\mathbf{n}
     \end{equation}
     where \(\mathbf{P}\) is the total momentum of the system is conserved. Hence
-if we have homogeneity of space (that is, a potential term on dependent on the
-vector difference of objects), we have conservation of momentum in the direction
-of \(\mathbf{n}\). However, the argument holds for all vectors \(\mathbf{n}\)
-and hence we have conservation of momentum in all directions, and more simply,
-we have conservation of momentum.
+    if we have homogeneity of space (that is, a potential term on dependent on the
+    vector difference of objects), we have conservation of momentum in the direction
+    of \(\mathbf{n}\). However, the argument holds for all vectors \(\mathbf{n}\)
+    and hence we have conservation of momentum in all directions, and more simply,
+    we have conservation of momentum.
 \end{example}
 This theorem has many important other consequences\footnote{If space is
-isotropic, i.e.\ the Lagrangian is invariant under rotations around an axis, or
-differently \(V(|\mathbf{r}_i - \mathbf{r}_j|)\) is only a function of the
-magnitude of the distance between objects, then you have conservation of total
-angular momentum. If the Lagrangian is invariant under time shifts
-\(t\to t + a\) (homogeneity in time) then \(H = \sum_i\dot{q}_i\pdv{L}{\dot{q}_i} - L\)
-is conserved. This quantity is known as the Hamiltonian and is, in most systems,
-the total energy.} and makes proving conservation laws, the thing physicists
+    isotropic, i.e.\ the Lagrangian is invariant under rotations around an axis, or
+    differently \(V(|\mathbf{r}_i - \mathbf{r}_j|)\) is only a function of the
+    magnitude of the distance between objects, then you have conservation of total
+    angular momentum. If the Lagrangian is invariant under time shifts
+    \(t\to t + a\) (homogeneity in time) then \(H = \sum_i\dot{q}_i\pdv{L}{\dot{q}_i} - L\)
+    is conserved. This quantity is known as the Hamiltonian and is, in most systems,
+    the total energy.} and makes proving conservation laws, the thing physicists
 love most, much easier. In fact it turns out, every conservation law has a
 corresponding symmetry, however discrete symmetries do not depend on a
 continuous parameter and hence transformation such as parity transformations,
@@ -158,7 +158,7 @@ unit length is directly proportional to the force exerted on that rod. This
 relation is written \(F = Y\xi\) where \(Y\) is the Young's Modulus and \(\xi\)
 is the extension per unit length. The extension per unit length in the
 discretized system is \(\xi = \frac{\eta_{i + 1} - \eta_i}{a}\) and the force
-required to do the extension is 
+required to do the extension is
 \begin{equation}\label{eq:youngsMod}
     F = k(\eta_{i + 1} - \eta_i) = ka\left(\frac{\eta_{i + 1} - \eta_i}{a}\right) = ka\xi
 \end{equation}
@@ -173,8 +173,8 @@ distance \(a\) and hence
 \end{equation}
 and in the limiting case \(a\to 0\) this term approaches
 \(\pdv{\eta}{x}\)\footnote{The only reason its not \(\dv{\eta}{x}\) is because
-\(\eta\) depends on both time \(t\) and space \(x\) so partial derivatives are
-necessary.} and \(a\) plays the role of \(\dd{x}\). Hence the sum over
+    \(\eta\) depends on both time \(t\) and space \(x\) so partial derivatives are
+    necessary.} and \(a\) plays the role of \(\dd{x}\). Hence the sum over
 particles, becoming an integral over \(x\) and the Lagrangian reads
 \begin{equation}\label{eq:contLag}
     L = \frac{1}{2}\int_\mathbb{R}\left[\mu\left(\pdv{\eta}{t}\right)^2 - Y\left(\pdv{\eta}{x}\right)^2\right]\dd{x}.
@@ -200,7 +200,7 @@ We treat the Lagrangian density as a function of a field and it's derivatives.
 In the above example \(\eta\) is a field that describes, at each point, the
 displacement from equilibrium. The question is then, given a Lagrangian density
 can we formulate the equations of motion of the system purely in terms of it,
-and it's derivatives like we did with the Lagrangian.  
+and it's derivatives like we did with the Lagrangian.
 
 \section{Euler-Lagrange Equations Revisited}
 
@@ -213,7 +213,7 @@ dimensions and the single time. In the physics literature this space is normally
 denoted \(\mathbb{R}^{1,3} = \mathbb{R}\times\mathbb{R}^3\). The underlying set
 is simply \(\mathbb{R}^4\), however the inner product, and hence
 metric\footnote{The inner product induces a norm, which determines the metric by
-\(d(x,y) = \|x - y\|\).}, is altered.
+    \(d(x,y) = \|x - y\|\).}, is altered.
 
 A point in this space (called an event) is denoted as (in units where \(c = 1\))
 \((t, x, y, z) = (x^0, x^1, x^2, x^3) = x^\mu\) where the superscripts are
@@ -251,7 +251,7 @@ and note that we can very easily raise and lower all indices in the expressions
 aforementioned by ``contracting'' with metric of the space. In the work that
 follows we work in a flat Minkowski spacetime with metric \(\eta_{\mu\nu}\) and
 signature \(\mathrm{diag}(-,+,+,+)\)\footnote{This is just shorthand for
-\(\mqty(\dmat[0]{-1,1,1,1})\).}. Contracting with the metric means the
+    \(\mqty(\dmat[0]{-1,1,1,1})\).}. Contracting with the metric means the
 following.
 \begin{equation}
     x_\mu = g_{\mu\nu}x^\nu \qquad A_{\mu\nu} = g_{\mu\alpha}g_{\nu\beta}A^{\alpha\beta}
@@ -263,7 +263,7 @@ We follow the same procedure as before in the derivation, by varying the action.
 Here, the field \(\delta\varphi\) will be chosen so that it vanishes outside the
 region of spacetime we are considering.
 \begin{align}\label{eq:ELfirst}
-    \delta S & \coloneqq S[\varphi + \delta\varphi] - S[\varphi] \nonumber\\
+    \delta S & \coloneqq S[\varphi + \delta\varphi] - S[\varphi] \nonumber                                                                                   \\
              & = \int \lag(\varphi + \delta\varphi, \partial_\mu\varphi + \partial_\mu\delta\varphi) - \lag(\varphi, \partial_\mu\varphi)\dd[4]{x} \nonumber \\
              & = \int \pdv{\lag}{\varphi}\delta\varphi + \pdv{\lag}{(\partial_\mu\varphi)}\delta{(\partial_\mu\varphi)}\dd[4]{x}
 \end{align}
@@ -279,7 +279,7 @@ We then integrate by parts the second term, and because we chose
 \(\delta\varphi\) to be 0 outside of our region of interest the boundary term
 goes to 0. Hence we have
 \begin{align}
-    \delta S & = \int \pdv{\lag}{\varphi}\delta\varphi - \partial_\mu\pdv{\lag}{(\partial_\mu\varphi)}\delta\varphi\dd[4]{x} \nonumber\\
+    \delta S & = \int \pdv{\lag}{\varphi}\delta\varphi - \partial_\mu\pdv{\lag}{(\partial_\mu\varphi)}\delta\varphi\dd[4]{x} \nonumber \\
              & = \int \left[\pdv{\lag}{\varphi} - \partial_\mu \pdv{\lag}{(\partial_\mu\varphi)} \right]\delta\varphi\dd[4]{x}
 \end{align}
 In order for the action to be stationary on this field, \(\delta S\) must be 0
@@ -294,7 +294,7 @@ equation would be an Euler-Lagrange equation for a Lagrangian density dependent
 on multiple fields, i.e. \(\lag(\varphi_i,\partial_\mu\varphi_i)\) for
 \(i\in\mathbb{N}\). If this is the case, we can then vary the action with
 respect to each field, to obtain the above Euler-Lagrange equation for each
-independent field. That is we have 
+independent field. That is we have
 \begin{equation}\label{eq:ELfieldsMul}
     \pdv{\lag}{\varphi_i} - \partial_\mu \pdv{\lag}{(\partial_\mu\varphi_i)} = 0
 \end{equation}
@@ -385,7 +385,7 @@ satisfied by the constructions of the potentials.
 \end{align}
 These equations, along with the Lorentz force law
 \begin{align}\label{eq:lorentz}
-    \mathbf{F} & = q\left(\mathbf{E} + \mathbf{v}\times\mathbf{B}\right) \nonumber\\
+    \mathbf{F} & = q\left(\mathbf{E} + \mathbf{v}\times\mathbf{B}\right) \nonumber                         \\
                & = q\left(-\nabla\varphi - \partial_t\mathbf{A} + \nabla(\mathbf{v}\cdot\mathbf{A})\right)
 \end{align}
 allow us to construct the Lagrangian of Electrodynamics.
@@ -398,7 +398,7 @@ allow us to construct the Lagrangian of Electrodynamics.
 
 With the electric and magnetic fields written in terms of ``potential'' functions
 \begin{align}
-    \mathbf{E} & = -\nabla\varphi - \partial_t\mathbf{A} \label{eq:Epotential}\\
+    \mathbf{E} & = -\nabla\varphi - \partial_t\mathbf{A} \label{eq:Epotential} \\
     \mathbf{B} & = \nabla\times\mathbf{A} \label{eq:Bpotential}
 \end{align}
 we might wonder about the uniqueness of such fields \(\varphi\) and \(\mathbf{A}\).
@@ -409,16 +409,16 @@ complicated in general, however. Suppose we are given electric and magnetic
 fields and have gone about finding potentials for those fields. If I then come
 along and make the transformation
 \begin{align}
-    \varphi \to \varphi' & = \varphi - \partial_t\chi \\
+    \varphi \to \varphi'     & = \varphi - \partial_t\chi \\
     \mathbf{A}\to\mathbf{A}' & = \mathbf{A} + \nabla\chi
 \end{align}
 we can see how the given electromagnetic fields change.
 \begin{align*}
-    \mathbf{B}\to\mathbf{B}' & = \nabla\times\left(\mathbf{A} + \nabla\chi\right) \\
-                             & = \nabla\times\mathbf{A} + \cancelto{0}{\nabla\times(\nabla\chi)} \\
-                             & = \mathbf{B} \\
+    \mathbf{B}\to\mathbf{B}' & = \nabla\times\left(\mathbf{A} + \nabla\chi\right)                                              \\
+                             & = \nabla\times\mathbf{A} + \cancelto{0}{\nabla\times(\nabla\chi)}                               \\
+                             & = \mathbf{B}                                                                                    \\
     \mathbf{E}\to\mathbf{E}' & = -\nabla\left(\varphi - \partial_t\chi\right) - \partial_t\left(\mathbf{A} + \nabla\chi\right) \\
-                             & = -\nabla\varphi + \partial_t\nabla\chi - \partial_t\mathbf{A} - \partial_t\nabla\chi \\
+                             & = -\nabla\varphi + \partial_t\nabla\chi - \partial_t\mathbf{A} - \partial_t\nabla\chi           \\
                              & = \mathbf{E}
 \end{align*}
 Surprisingly the electromagnetic fields are completely unchanged by these
@@ -478,8 +478,8 @@ motion of the system. Remembering the EM Lagrangian~\ref{eq:lagEM} we have the
 following transformation.
 \begin{align*}
     L_\text{EM}\to L_\text{EM}' & = \frac{1}{2}m\dot{\mathbf{x}}^2 - q\left(\varphi - \partial_t\chi\right) + q\dot{\mathbf{x}}\cdot\left(\mathbf{A} + \nabla\chi\right) \\
-                                & = \frac{1}{2}m\dot{\mathbf{x}}^2 - q\varphi + q\dot{\mathbf{x}}\cdot\mathbf{A} - q\partial_t\chi + q\dot{\mathbf{x}}\cdot\nabla\chi \\
-                                & = L_\text{EM} + q\left(\partial_t\chi + \dot{\mathbf{x}}\cdot\nabla\chi\right) \\
+                                & = \frac{1}{2}m\dot{\mathbf{x}}^2 - q\varphi + q\dot{\mathbf{x}}\cdot\mathbf{A} - q\partial_t\chi + q\dot{\mathbf{x}}\cdot\nabla\chi    \\
+                                & = L_\text{EM} + q\left(\partial_t\chi + \dot{\mathbf{x}}\cdot\nabla\chi\right)                                                         \\
                                 & = L_\text{EM} + \dv{t}q\chi(t,\mathbf{x})
 \end{align*}
 The characteristic of only changing by a total derivative is very important.
@@ -499,7 +499,7 @@ the Lagrangian) dependent on a complex scalar field.
 \end{equation}
 It is easy to see if we make the global substitution \(\varphi\to\e^{\im \alpha}\varphi\) where \(\alpha\in \mathbb{R}\), the Lagrangian remains invariant and the equations of motion are hence unaffected. It is natural to then ask what if \(\alpha\) is not just a constant, but rather a function of space, i.e. \(\alpha(x)\). Under this transformation the derivative of the field \(\varphi\) transforms as
 \begin{align}\label{eq:noSym}
-    \partial_\mu\varphi\to (\partial_\mu\varphi)' & = \partial_\mu\left(\e^{\im\alpha(x)}\varphi\right) \nonumber\\
+    \partial_\mu\varphi\to (\partial_\mu\varphi)' & = \partial_\mu\left(\e^{\im\alpha(x)}\varphi\right) \nonumber                           \\
                                                   & = \e^{\im\alpha(x)}\left(\partial_\mu\varphi + \im\varphi\,\partial_\mu\alpha(x)\right)
 \end{align}
 and hence it is clear this local transformation will not leave the Lagrangian
@@ -516,7 +516,7 @@ term in our new derivative. In particular we can guess
 of spacetime (for now). Under the local transformation this derivative
 transforms as follows.
 \begin{align*}
-    D_\mu\varphi \to (D_\mu\varphi)' & = \left(\partial_\mu  - \im A_\mu(x)\right)\e^{\im\alpha(x)}\varphi \\
+    D_\mu\varphi \to (D_\mu\varphi)' & = \left(\partial_\mu  - \im A_\mu(x)\right)\e^{\im\alpha(x)}\varphi                                             \\
                                      & = e^{\im\alpha(x)}\left(\partial_\mu\varphi + \im \varphi\, \partial_\mu \alpha(x) - \im A_\mu(x)\varphi\right)
 \end{align*}
 But this still isn't right! What if this vector field \(A_\mu\) that we added
@@ -535,7 +535,7 @@ To recap, if we require a local gauge invariance we were forced to introduce a
 new field which is referred to as a \textit{gauge field} and it's transformation
 law is specified by (\ref{eq:vectorTrans}). This field played a starring role in
 the modified derivative, hereinafter referred to as the \textit{gauge covariant
-derivative}. Hence the final Lagrangian we have arrived upon which respects the
+    derivative}. Hence the final Lagrangian we have arrived upon which respects the
 local gauge transformation is
 \begin{equation}\label{eq:covLag}
     \lag = D_\mu\varphi D^\mu\varphi - V(|\varphi|).
@@ -551,9 +551,9 @@ where \(\mathbb{C}^{n\times n}\) denotes \(n\) by \(n\) matrices with entries in
 \(\mathbb{C}\), \(U^\dagger\) denotes the Hermitian conjugate, and \(\mathbf{1}\)
 denotes the identity matrix. This object is called the
 \textit{unitary group}\footnote{An important subgroup of this group is unitary
-matrices whose determinant is \(+1\), i.e. \(\det U = 1\). These matrices indeed
-form a subgroup and is called the \textit{special unitary group} denoted
-\(\mathsf{SU}(n)\).} and it forms an important set of matrices which is a group
+    matrices whose determinant is \(+1\), i.e. \(\det U = 1\). These matrices indeed
+    form a subgroup and is called the \textit{special unitary group} denoted
+    \(\mathsf{SU}(n)\).} and it forms an important set of matrices which is a group
 under matrix multiplication. In particular \(\mathsf{U}(1)\) denotes 1 by 1
 matrices, or complex numbers whose norm is 1, i.e.\ complex numbers on the unit
 circle. By saying the Lagrangian has a \(\mathsf{U}(1)\) symmetry, means if we
@@ -584,14 +584,14 @@ real-valued scalar fields. The question is then ``what does the action
 scalar fields?'' Explicitly, using the correspondence between \(\mathbb{C}\) and
 \(\mathbb{R}^2\), we have
 \begin{align*}
-    \varphi \to \e^{\im\alpha}\varphi & = \e^{\im\alpha}\left(\varphi_1 + \e^{\im\frac{\pi}{2}}\varphi_2\right) \\
-                                      & = \left(\cos{\alpha} + \im \sin{\alpha}\right)\left(\varphi_1 + \im\varphi_2\right) \\
+    \varphi \to \e^{\im\alpha}\varphi & = \e^{\im\alpha}\left(\varphi_1 + \e^{\im\frac{\pi}{2}}\varphi_2\right)                                         \\
+                                      & = \left(\cos{\alpha} + \im \sin{\alpha}\right)\left(\varphi_1 + \im\varphi_2\right)                             \\
                                       & = \varphi_1\cos{\alpha} - \varphi_2\sin{\alpha} + \im\left(\varphi_1\sin{\alpha} + \varphi_2\cos{\alpha}\right)
- \end{align*}
- Now, using the fact that \(\mathbb{C}\ni z = x + \im y\cong \begin{pmatrix}x\\y\end{pmatrix}\in\mathbb{R}^2\),
+\end{align*}
+Now, using the fact that \(\mathbb{C}\ni z = x + \im y\cong \begin{pmatrix}x\\y\end{pmatrix}\in\mathbb{R}^2\),
 we can write the following.
- \begin{align*}
-    \varphi\to\e^{\im\alpha}\varphi & \cong \begin{pmatrix} \varphi_1\cos{\alpha} - \varphi_2\sin{\alpha} \\ \varphi_1\sin{\alpha} + \varphi_2\cos{\alpha} \end{pmatrix} \\
+\begin{align*}
+    \varphi\to\e^{\im\alpha}\varphi & \cong \begin{pmatrix} \varphi_1\cos{\alpha} - \varphi_2\sin{\alpha} \\ \varphi_1\sin{\alpha} + \varphi_2\cos{\alpha} \end{pmatrix}                       \\
                                     & = \begin{pmatrix} \cos{\alpha} & -\sin{\alpha} \\ \sin{\alpha} & \cos{\alpha} \end{pmatrix}\begin{pmatrix} \varphi_1 \\ \varphi_2 \end{pmatrix} \\
                                     & = R_\alpha\pmb{\varphi}
 \end{align*}
@@ -619,13 +619,13 @@ new language of fields. We start with a definition about what symmetries really
 are in our new context of fields.
 \begin{definition}
     A transformation of fields \(\phi\to\phi + \delta\phi\) is said to be a
-symmetry of \(\lag\) if, upon transformation the Lagrangian changes by a total
-divergence.
+    symmetry of \(\lag\) if, upon transformation the Lagrangian changes by a total
+    divergence.
     \begin{equation}
         \delta\lag = \partial_\mu F^\mu
     \end{equation}
     Where \(F^\mu(\phi)\) is an arbitrary collection of functions, of the
-transformation field, that decay to 0 at infinity.
+    transformation field, that decay to 0 at infinity.
 \end{definition}
 It is important to note this is rather different than the symmetry definition
 for the particle Lagrangian where we said the Lagrangian musn't change under the
@@ -641,14 +641,14 @@ if integrated over all space, and if there is an extra divergence, i.e.
 \end{theorem}
 \begin{proof}
     Let \(\phi\to\phi + \delta\phi\) be a symmetry transformation of \(\lag\).
-Now the Lagrangian, under this transformation, changes as follows.
+    Now the Lagrangian, under this transformation, changes as follows.
     \begin{align}
-        \delta\lag & = \pdv{\lag}{\phi}\delta\phi + \pdv{\lag}{(\partial_\mu\phi)}\partial_\mu(\delta\phi) \\
+        \delta\lag & = \pdv{\lag}{\phi}\delta\phi + \pdv{\lag}{(\partial_\mu\phi)}\partial_\mu(\delta\phi)                                                                      \\
                    & = \left(\pdv{\lag}{\phi} - \partial_\mu\pdv{\lag}{(\partial_\mu\phi)}\right)\delta\phi + \partial_\mu\left(\pdv{\lag}{(\partial_\mu\phi)}\delta\phi\right)
     \end{align}
     When the Euler-Lagrange equations are satisfied, the first term is 0 and
-hence the change in the Lagrangian is a total derivative. Since
-\(\delta\lag = \partial_\mu F^\mu\) we can define
+    hence the change in the Lagrangian is a total derivative. Since
+    \(\delta\lag = \partial_\mu F^\mu\) we can define
     \begin{equation}
         j^\mu\coloneqq \pdv{\lag}{(\partial_\mu\phi)}\delta\phi - F^\mu
     \end{equation}

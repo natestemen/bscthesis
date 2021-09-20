@@ -23,11 +23,11 @@ We begin with a few definitions that are of utmost importance in order to grasp
 further concepts. In the work to come, pertaining to Q-Balls we will need a
 notion of ``size'' that will measure the strength of the solutions. We will here
 on out assume the underlying structure of a vector space\footnote{If it is not
-clear such a space is a vector space, we will provide an argument.}.
+    clear such a space is a vector space, we will provide an argument.}.
 \begin{definition}\label{def:normspace}
     A vector space \(V\) over the field \(\mathbb{F}\) equipped with a function
     \(\|\cdot\|: V\to \mathbb{F}\) is said to be a \textbf{normed vector space}
-    if \(\|\cdot \|\) satisfies the following properties. 
+    if \(\|\cdot \|\) satisfies the following properties.
     \begin{itemize}
         \item \(\|\alpha x\| = |\alpha|\|x\|\)\hfill \normalfont{(Absolutely Homogenuous)}
         \item \(\|x\| \geq 0\) and equals 0 if and only if \(x = 0\) \hfill \normalfont{(Positive Definite)}
@@ -87,12 +87,12 @@ metric \(d_{\|\cdot\|}\) defined in Definition~\ref{def:complete}.
 To begin our work with function spaces we introduce one of the most fundamental
 spaces, the space of Lebesgue integrable functions. In particular, given a
 measure space \((S,\Sigma, \mu)\)\footnote{Here \(S\) is the base set,
-\(\Sigma\) is a collections of subsets of \(S\) that form a \(\sigma\)-algebra
-(a collections of subsets that contain the base set, is closed under
-complements, and closed under countable unions) and \(\mu\) is a function
-\(\mu:\Sigma\to[0,\infty]\) such that \(\mu(E)\geq 0\),
-\(\mu(\varnothing) = 0\), \(\mu\left(\bigcup_{i\in\mathbb{N}}E_i\right) = \sum_{i\in\mathbb{N}}\mu(E_i)\),
-and finally we have the conditions that \(\mu(S) = 1\).}, for each
+    \(\Sigma\) is a collections of subsets of \(S\) that form a \(\sigma\)-algebra
+    (a collections of subsets that contain the base set, is closed under
+    complements, and closed under countable unions) and \(\mu\) is a function
+    \(\mu:\Sigma\to[0,\infty]\) such that \(\mu(E)\geq 0\),
+    \(\mu(\varnothing) = 0\), \(\mu\left(\bigcup_{i\in\mathbb{N}}E_i\right) = \sum_{i\in\mathbb{N}}\mu(E_i)\),
+    and finally we have the conditions that \(\mu(S) = 1\).}, for each
 \(p\in[1,\infty)\) we define the Lebesgue norm of a function % chktex 9
 \(f:S\to\mathbb{R}\) as
 \begin{equation}
@@ -105,7 +105,7 @@ scalars, i.e., a vector space.
     The set \(L^p(\Omega)\) (\(p\in[1,\infty)\)) with addition and scalar % chktex 9
     multiplication defined by
     \begin{align}
-        (f + g)(x)    & \coloneqq f(x) + g(x) \\
+        (f + g)(x)    & \coloneqq f(x) + g(x)       \\
         (\alpha f)(x) & \coloneqq \alpha\cdot f(x).
     \end{align}
     forms a vector space.
@@ -113,16 +113,16 @@ scalars, i.e., a vector space.
 \begin{proof}
     We begin by showing \(\alpha f\in L^p(\Omega)\).
     \begin{align*}
-        \|\alpha f\|_{L^p(\Omega)} & = \left(\int_\Omega |\alpha f|^p\dd{\mu}\right)^\frac{1}{p} \\
-                                   & \leq |\alpha|\left(\int_\Omega |f|^p\dd{\mu}\right)^\frac{1}{p}\\
+        \|\alpha f\|_{L^p(\Omega)} & = \left(\int_\Omega |\alpha f|^p\dd{\mu}\right)^\frac{1}{p}     \\
+                                   & \leq |\alpha|\left(\int_\Omega |f|^p\dd{\mu}\right)^\frac{1}{p} \\
                                    & = |\alpha|\cdot\|f\|_{L^p(\Omega)} < \infty
     \end{align*}
     Since it's Lebesgue integral is finite, it is also in the space. We know
     show vector addition also yields a function within \(L^p(\Omega)\).
     \begin{align*}
-        \|f + g\|_{L^p(\Omega)} & = \left(\int_\Omega |f + g|^p\dd{\mu}\right)^\frac{1}{p} \\
+        \|f + g\|_{L^p(\Omega)} & = \left(\int_\Omega |f + g|^p\dd{\mu}\right)^\frac{1}{p}               \\
                                 & \leq \left(\int_\Omega |2\max{(|f|,|g|)}|^p\dd{\mu}\right)^\frac{1}{p} \\
-                                & = 2\left(\int_\Omega |f|^p\dd{\mu}\right)^\frac{1}{p} \\
+                                & = 2\left(\int_\Omega |f|^p\dd{\mu}\right)^\frac{1}{p}                  \\
                                 & = 2\|f\|_{L^p(\Omega)} < \infty
     \end{align*}
     Where we have taken \(\max{(|f|,|g|)} = |f|\) arbitrarily. The rest of the
@@ -136,9 +136,9 @@ scalars, i.e., a vector space.
 \end{remark}
 
 An extremely important, and I would argue the \textit{best}\footnote{Not
-subjective whatsoever.} value of \(p\) is 2. This is because \(L^2\) is a
+    subjective whatsoever.} value of \(p\) is 2. This is because \(L^2\) is a
 Hilbert space\footnote{Remember this is a complete inner product space, pretty
-much the best version of a vector space you can imagine.}. The functions that
+    much the best version of a vector space you can imagine.}. The functions that
 live here are often called square integrable functions and have applications
 across all areas of mathematics and are extremely prevalent in physics, in
 particular quantum mechanics.
@@ -173,7 +173,7 @@ To illustrate this concept we provide the following example.
     Let \(f:\mathbb{R}\to\mathbb{R}\) be defined by
     \begin{equation}
         f(x) = \begin{cases}
-            g(x) & x\in[a,b] \\
+            g(x) & x\in[a,b]        \\
             0    & \text{otherwise}
         \end{cases}
     \end{equation}
@@ -195,7 +195,7 @@ lives. We provide the following lemma without proof.
 \begin{lemma}\label{lem:comsupp}
     Suppose \(f:\mathbb{R}\to\mathbb{R}\) is a continuous function compactly
     supported on \(U\subset\mathbb{R}\). Then \(f\) vanishes on the boundary of
-    \(U\) i.e., \(f|_{\partial U} = 0\). 
+    \(U\) i.e., \(f|_{\partial U} = 0\).
 \end{lemma}
 
 Before the definition we introduce two new spaces. Some of the ``nicest''
@@ -259,9 +259,9 @@ objects.
         \int_U\left(g_1 - g_2\right)\varphi\dd{x} = 0
     \end{equation}
     and thus \(g_1\overset{\text{a.e.}}{=}g_2\)\footnote{The ``a.e.'' over the
-    ``\(=\)'' means these functions are equal \textbf{a}lmost
-    \textbf{e}verywhere, or put differently, they are the same in the integral
-    sense, but not necessarily pointwise.}.
+        ``\(=\)'' means these functions are equal \textbf{a}lmost
+        \textbf{e}verywhere, or put differently, they are the same in the integral
+        sense, but not necessarily pointwise.}.
 \end{proof}
 
 With the basic ideas of weak differentiability we can construct the Sobolev
@@ -333,7 +333,7 @@ It is easy to see that given, even an infinitely differentiabl function, it need
 not attain its minima as seen in \(f(x) = \e^x\). Thus, in order to force it to
 attain its minima we must control the function at ``large'' input. A way to do
 this is to say, as \(|x|\to \infty\) we also have \(f(x)\to +\infty\). The
-following definition generalizes this to functionals. 
+following definition generalizes this to functionals.
 
 \begin{definition}\label{def:coercive}
     A functional \(I\) with Lagrangian \(L\) is said to be coercive if, for a
@@ -355,8 +355,8 @@ in terms of the functional.
     To show these are equivalent, we simply integrate the Lagrangian and use the
     inequality.
     \begin{align*}
-        I[f] & = \int_U L(f',f,x)\dd{x} \\
-             & \geq \int_U \alpha |f'|^q - \beta \dd{x} \\
+        I[f] & = \int_U L(f',f,x)\dd{x}                    \\
+             & \geq \int_U \alpha |f'|^q - \beta \dd{x}    \\
              & = \delta\|f'\|_{L^q(U)}^q - \gamma \qedhere
     \end{align*}
 \end{proof}

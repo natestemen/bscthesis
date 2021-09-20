@@ -25,9 +25,9 @@ form (\(\alpha\ll 1\)) this symmetry is (using the Taylor expansion of \(\e^x\))
 \(\Phi \to \Phi + \im\alpha\Phi\) and \(\overline{\Phi} \to \overline{\Phi} - \im\alpha\overline{\Phi}\).
 Under this infinitesimal form, the Lagrangian changes as follows.
 \begin{align}
-    \lag & \to -\partial_\mu(\Phi + \im\alpha\Phi)\,\partial^\mu(\overline{\Phi} - \im\alpha\overline{\Phi}) - V(|\Phi + \im\alpha\Phi|) \\
+    \lag & \to -\partial_\mu(\Phi + \im\alpha\Phi)\,\partial^\mu(\overline{\Phi} - \im\alpha\overline{\Phi}) - V(|\Phi + \im\alpha\Phi|)               \\
          & = -\left(\partial_\mu\Phi + \im\alpha\partial_\mu\Phi\right)\left(\partial^\mu\overline{\Phi} - \im\alpha\overline{\Phi}\right) - V(|\Phi|) \\
-         & = -\partial_\mu\Phi\,\partial^\mu\overline{\Phi} + \cancelto{0}{\alpha^2\partial_\mu\Phi\,\partial^\mu\overline{\Phi}} - V(|\Phi|) \\
+         & = -\partial_\mu\Phi\,\partial^\mu\overline{\Phi} + \cancelto{0}{\alpha^2\partial_\mu\Phi\,\partial^\mu\overline{\Phi}} - V(|\Phi|)          \\
          & = \lag
 \end{align}
 Where we have used the fact that \(|\Phi + \im\alpha\Phi| = \left[\left(\Phi + \im\alpha\Phi\right)\left(\overline{\Phi} - \im\alpha\overline{\Phi}\right)\right]^{1/2} = \left[\Phi\overline{\Phi} + \alpha^2\Phi\overline{\Phi}\right]^{1/2}\)
@@ -38,12 +38,12 @@ write \(\delta\lag = 0\). For simplicity the Noether's Theorem in
 Chapter~\ref{chap:fields} was for a Lagrangian dependent on one field. For our
 Lagrangian, we treat \(\Phi\) and \(\overline{\Phi}\) as separate
 fields\footnote{Written in terms of real components we have \(\Phi = \phi_1 + \im\phi_2\)
-and \(\overline{\Phi} = \phi_1 - \im\phi_2\) which are clearly linearly
-independent functions as long as \(\phi_2\) is non-trivial.} and in a more
+    and \(\overline{\Phi} = \phi_1 - \im\phi_2\) which are clearly linearly
+    independent functions as long as \(\phi_2\) is non-trivial.} and in a more
 generalized Noether's Theorem we simply add terms to the current as follows.
 \begin{align}
-    \alpha j^\mu & = \pdv{\lag}{(\partial_\mu\Phi)}\delta\Phi + \pdv{\lag}{(\partial_\mu\overline{\Phi})}\delta\overline{\Phi} \label{eq:current} \\
-                 & = -\partial^\mu\overline{\Phi}\left(\im\alpha\Phi\right) - \partial^\mu\Phi\left(-\im\alpha\overline{\Phi}\right) \label{eq:current2}\\
+    \alpha j^\mu & = \pdv{\lag}{(\partial_\mu\Phi)}\delta\Phi + \pdv{\lag}{(\partial_\mu\overline{\Phi})}\delta\overline{\Phi} \label{eq:current}        \\
+                 & = -\partial^\mu\overline{\Phi}\left(\im\alpha\Phi\right) - \partial^\mu\Phi\left(-\im\alpha\overline{\Phi}\right) \label{eq:current2} \\
                  & = \alpha\im\left(\overline{\Phi}\partial^\mu\Phi - \Phi\partial^\mu\overline{\Phi}\right)
 \end{align}
 It is important to note here how we went from (\ref{eq:current}) to
@@ -77,8 +77,8 @@ which we will show does not depend on time, and hence is a constant of motion.
 To show this we will simply take the time derivative of (\ref{eq:noethercharge})
 and show it is equal to 0.
 \begin{align}
-    \pdv{Q}{t} & = \pdv{t}\int_{\mathbb{R}^3}j^0\dd[3]{x} \\
-               & = \int_{\mathbb{R}^3}\pdv{j^0}{t}\dd[3]{x} \\
+    \pdv{Q}{t} & = \pdv{t}\int_{\mathbb{R}^3}j^0\dd[3]{x}             \\
+               & = \int_{\mathbb{R}^3}\pdv{j^0}{t}\dd[3]{x}           \\
                & = -\int_{\mathbb{R}^3}\nabla\cdot\mathbf{j}\dd[3]{x}
 \end{align}
 We can now use the Divergence Theorem to write this integral as a surface term
@@ -94,7 +94,7 @@ to our regular derivatives (derivatives with respect to vectors, rather than
 derivatives with respect to co-vectors, or linear functionals, or dual-vectors
 or whatever you'd like to call them).
 \begin{align}
-    j^\mu & = \im\left(\overline{\Phi}\partial^\mu\Phi - \Phi\partial^\mu\overline{\Phi}\right) \\
+    j^\mu & = \im\left(\overline{\Phi}\partial^\mu\Phi - \Phi\partial^\mu\overline{\Phi}\right)              \\
           & = \im\eta^{\mu\nu}\left(\overline{\Phi}\partial_\nu\Phi - \Phi\partial_\nu\overline{\Phi}\right) \\
     j^0   & = \im\eta^{0\nu}\left(\overline{\Phi}\partial_\nu\Phi - \Phi\partial_\nu\overline{\Phi}\right)
 \end{align}
@@ -103,7 +103,7 @@ In order to proceed we recognize the only component of the ``vector''
 so our sum over \(\nu\) is really just one term. Thus our Noether Charge is
 given as
 \begin{align}
-    Q & = \int j^0\dd[3]{x} \\
+    Q & = \int j^0\dd[3]{x}                                                                                   \\
       & = \im\int\left(\Phi\dot{\overline{\Phi}} - \overline{\Phi}\dot{\Phi}\right)\dd[3]{x}\label{eq:charge}
 \end{align}
 In terms of a quantized theory \(Q\) often plays the role of either some sort of
@@ -138,38 +138,38 @@ ansatz the implicit time dependence of many of our objects disappears. For
 example our Lagrangian (\ref{eq:complexlag}) now reads
 \begin{align}
     \lag & = -\eta^{\mu\nu}\partial_\mu\Phi\partial_\nu\overline{\Phi} - V(|\Phi|) \\
-         & = |\dot{\Phi}|^2 - |\nabla\Phi|^2 - V(|\Phi|) \\
+         & = |\dot{\Phi}|^2 - |\nabla\Phi|^2 - V(|\Phi|)                           \\
          & = \omega^2\phi^2 - \phi_r^2 - V(\phi)
 \end{align}
 which is becoming much more ``differential equation''-esque. Most importantly
 though, \(\lag\) does not have any implicit or explicit \(t\) dependence and
 hence we have conservation of energy.\footnote{This fact is proved twice. First
-we can attack it via Noether's Theorem because of the symmetry \(t\to t + s\)
-which yields a conserved current which ends up having a Noether Charge of the
-energy. Or, we can show that the Lagrangian being independent of time is
-equivalent to the Hamiltonian being time-independent. If the Hamiltonian is
-independent of time, then surely the energy is constant by construction of the
-Hamiltonian.}
+    we can attack it via Noether's Theorem because of the symmetry \(t\to t + s\)
+    which yields a conserved current which ends up having a Noether Charge of the
+    energy. Or, we can show that the Lagrangian being independent of time is
+    equivalent to the Hamiltonian being time-independent. If the Hamiltonian is
+    independent of time, then surely the energy is constant by construction of the
+    Hamiltonian.}
 
 The energy density (\(T^{00}\)) is also very important and we can now calculate
 that with (\ref{eq:solitonansatz}) in mind. Remembering (\ref{eq:enmomlowered})
 we have
 \begin{align}
-    T^{00} & = 2|\dot{\Phi}|^2 - \lag \\
+    T^{00} & = 2|\dot{\Phi}|^2 - \lag                                        \\
            & = 2|\dot{\Phi}|^2 - |\dot{\Phi}|^2 + |\nabla\Phi|^2 + V(|\Phi|) \\
            & = \omega^2\phi^2 + \phi_r^2 + V(\phi)
 \end{align}
 where \(\phi_r\) denotes \(\dv{\phi}{r}\).\footnote{I just don't like to commit
-atrocities such as \(\phi'^2\).} With this we can easily calculate the total
+    atrocities such as \(\phi'^2\).} With this we can easily calculate the total
 energy of the system.
 \begin{align}
-    E & = \int T^{00}\dd[3]{x} \\
+    E & = \int T^{00}\dd[3]{x}                                                                                                                         \\
       & = \int_0^{2\pi}\!\!\dd{\varphi}\int_0^\pi\!\!\dd{\theta}\int_0^\infty\!\!\dd{r}\left(\omega^2\phi^2 + \phi_r^2 + V(\phi)\right)r^2\sin{\theta} \\
       & = 4\pi\int_0^\infty r^2\left(\omega^2\phi^2 + \phi_r^2 + V(\phi)\right)\dd{r} \label{eq:nospinenergy}
 \end{align}
 The conserved charge (\ref{eq:charge}) is then
 \begin{align}
-    Q & = \im\int\left(-\im\omega\phi^2 - \im\omega\phi^2\right)\dd[3]{x} \\
+    Q & = \im\int\left(-\im\omega\phi^2 - \im\omega\phi^2\right)\dd[3]{x}                                            \\
       & = 2\omega\int_0^{2\pi}\!\!\dd{\varphi}\int_0^\pi\!\!\dd{\theta}\int_0^\infty\!\!\dd{r}\phi^2 r^2\sin{\theta} \\
       & = 8\pi\omega\int_0^\infty r^2\phi^2\dd{r} \label{eq:nospincharge}.
 \end{align}
@@ -202,7 +202,7 @@ On the right hand side we have the operator \(\partial_\mu\partial^\mu\) which
 we can easily compute using (\ref{eq:partials}) to see \(\partial_\mu\partial^\mu = -\partial_t^2 + \nabla^2\)
 where \(\nabla^2\) is the Laplacian for spatial coordinates. Hence, in spherical
 coordinates\footnote{In spherical coordinates the radial part of the Laplacian
-is \(\frac{1}{r^2}\partial_r\left(r^2\partial_r\right)\).} (with a radially
+    is \(\frac{1}{r^2}\partial_r\left(r^2\partial_r\right)\).} (with a radially
 symmetric \(\Phi\), that is if \(\Phi(t,r)\)) we have
 \begin{align}
     V'\frac{\Phi}{2|\Phi|} & = -\ddot{\Phi} + \frac{1}{r^2}\pdv{r}\left(r^2\Phi'\right) \\
@@ -223,9 +223,9 @@ With the basic idea of Q-vortices behind us it is then natural to ask, as done
 in~\cite{spinningq}, if there exist spinning generalizations of the objects
 studied in Section~\ref{sec:solitonans}. To study this possibility we posit a
 solution \(\Phi\) in \(3 + 1\)\footnote{We are indeed working in 4-spacetime
-dimensions, but we are not allowing our solution to have a \(z\) dependence.
-This is because we are attempting to model a spinning Q-vortex solution
-travelling in the \(z\)-direction.} dimensions to have a particular dependence
+    dimensions, but we are not allowing our solution to have a \(z\) dependence.
+    This is because we are attempting to model a spinning Q-vortex solution
+    travelling in the \(z\)-direction.} dimensions to have a particular dependence
 on an angular variable as
 \begin{equation}\label{eq:spinningsoliton}
     \Phi(t, \mathbf{x}) = \phi(r)\,\e^{\im\omega t + \im N\theta}
@@ -236,7 +236,7 @@ potential term is exactly the same as before so we leave out the repetition and
 continue to the Laplacian which in cylindrical coordinates reads
 \(\nabla^2 = r^{-1}\partial_r\left(r\partial_r\right) + r^{-2}\partial_\theta^2 + \partial_z^2\).
 \begin{align}
-    \partial_\mu\partial^\mu\Phi & = -\ddot{\Phi} + \nabla^2\Phi \\
+    \partial_\mu\partial^\mu\Phi & = -\ddot{\Phi} + \nabla^2\Phi                                                     \\
                                  & = -\ddot{\Phi} + \frac{\Phi_r}{r}  + \Phi_{rr} + \frac{1}{r^2}\Phi_{\theta\theta}
 \end{align}
 And hence with our spinning soliton ansatz (\ref{eq:spinningsoliton}) our
@@ -251,14 +251,14 @@ this system travels along the \(z\)-axis we calculate the energy per unit
 length. This simply means integrating the energy density \(T^{00}\) over a
 2-dimensional plane rather than all of \(\mathbb{R}^3\).
 \begin{align}
-    T^{00} & = |\dot{\Phi}|^2 + |\nabla\Phi|^2 + V(|\Phi|) \\
+    T^{00} & = |\dot{\Phi}|^2 + |\nabla\Phi|^2 + V(|\Phi|)                            \\
            & = \omega^2\phi^2 + \left\|\begin{pmatrix} \phi_r \e^{\im\omega t + \im N\theta} \\ \frac{\im N}{r}\phi\e^{\im\omega t +\im N\theta}\end{pmatrix}\right\|^2 + V(\phi) \\
            & = \omega^2\phi^2 + \phi_r^2 + \frac{N^2}{r^2}\phi^2 + V(\phi)
 \end{align}
 Hence the total energy per unit length is give by
 \begin{align}
-    E_\ell & = \int T^{00}\dd[2]{x} \\
-           & = \int_0^{2\pi}\dd{\theta}\int_0^\infty\dd{r}\,r\left(\omega^2\phi^2 + \phi_r^2 + \frac{N^2}{r^2}\phi^2 + V(\phi)\right) \\
+    E_\ell & = \int T^{00}\dd[2]{x}                                                                                                          \\
+           & = \int_0^{2\pi}\dd{\theta}\int_0^\infty\dd{r}\,r\left(\omega^2\phi^2 + \phi_r^2 + \frac{N^2}{r^2}\phi^2 + V(\phi)\right)        \\
            & = 2\pi \int_0^\infty r\left(\omega^2\phi^2 + \phi_r^2 + \frac{N^2}{r^2}\phi^2 + V(\phi)\right)\dd{r} \label{eq:energyperlength}
 \end{align}
 Before we go on to discuss the angular momentum of this system we note that this
@@ -274,8 +274,8 @@ to calculate that we will first calcuate the Noether Charge
 in Section~\ref{sec:solitonans} although here we calculate the charge per unit
 length.
 \begin{align}
-    Q_\ell & = \int j^0\dd[2]{x} \\
-           & = 2\omega \int_0^{2\pi}\int_0^\infty r\dd{r}\phi^2 \\
+    Q_\ell & = \int j^0\dd[2]{x}                                             \\
+           & = 2\omega \int_0^{2\pi}\int_0^\infty r\dd{r}\phi^2              \\
            & = 4\pi\omega \int_0^\infty r\phi^2 \dd{r} \label{eq:spincharge}
 \end{align}
 We can now extract the angular momentum per unit length from the energy momentum
@@ -283,7 +283,7 @@ tensor if we integrate \(T^{0\theta}\). We fist calculate magnitude of the value
 to see how much angular momentum these objects have.
 \begin{align}
     |T^{0\theta}| & = \dot{\overline{\Phi}}\Phi_\theta + \dot{\Phi}\overline{\Phi}_\theta \\
-                  & = (-\im\omega\phi)(\im N\phi) + (\im\omega\phi)(-\im N\phi) \\
+                  & = (-\im\omega\phi)(\im N\phi) + (\im\omega\phi)(-\im N\phi)           \\
                   & = 2N\omega\phi^2
 \end{align}
 Hence, the angular momentum per unit length is give by
@@ -336,8 +336,8 @@ to have a global minima at a point \(\tilde{\phi} \neq 0\). The following
 argument ensures this is the case for \(\phi \neq 0\).
 \begin{align*}
     V(\phi) = \lambda\left(\phi^6 - a\phi^4 + b\phi^2\right) & > 0 \\
-                                        \phi^4 - a\phi^2 + b & > 0 \\
-                                                x^2 - ax + b & > 0 
+    \phi^4 - a\phi^2 + b                                     & > 0 \\
+    x^2 - ax + b                                             & > 0
 \end{align*}
 where \(x = \phi^2\), and hence the last polynomial written down has no real
 roots provided it is always greater than 0. Hence the discriminant is negative,
@@ -369,22 +369,22 @@ aid in the proof.
 \begin{lemma}\label{lem:nonlineig}
     The differential equation (\ref{eq:DE}) may be treated as a nonlinear
     eigenvalue problem such that \(\omega^2\) appears in the Lagrange multiplier
-    of (\ref{eq:consmin}). 
+    of (\ref{eq:consmin}).
 \end{lemma}
 \begin{proof}
     To prove this we will first find the first variation of each functional.
     \begin{align}
-        \delta I & = \left.\dv{\varepsilon}I[\phi + \varepsilon\psi]\right|_{\varepsilon = 0} \nonumber\\
-                 & = \dv{\varepsilon}\int_0^R \frac{1}{2}\left(r\left(\phi_r + \varepsilon\psi_r\right)^2 + \frac{N^2}{r}\left(\phi + \varepsilon\psi\right)^2\right) \nonumber\\
-                 & \phantom{=}\,\,+ \left.r\lambda\left(\left(\phi + \varepsilon\psi\right)^6 - a\left(\phi + \varepsilon\psi\right)^4 + b\left(\phi + \varepsilon\psi\right)^2\right)\dd{r}\right|_{\varepsilon = 0} \nonumber\\
-                 & = \int_0^R r\phi_r\psi_r + \frac{N^2}{r}\phi\psi + r\lambda\left(6\phi^5 - 4a\phi^3 + 2b\phi\right)\psi\dd{r} \nonumber\\
+        \delta I & = \left.\dv{\varepsilon}I[\phi + \varepsilon\psi]\right|_{\varepsilon = 0} \nonumber                                                                                                                         \\
+                 & = \dv{\varepsilon}\int_0^R \frac{1}{2}\left(r\left(\phi_r + \varepsilon\psi_r\right)^2 + \frac{N^2}{r}\left(\phi + \varepsilon\psi\right)^2\right) \nonumber                                                 \\
+                 & \phantom{=}\,\,+ \left.r\lambda\left(\left(\phi + \varepsilon\psi\right)^6 - a\left(\phi + \varepsilon\psi\right)^4 + b\left(\phi + \varepsilon\psi\right)^2\right)\dd{r}\right|_{\varepsilon = 0} \nonumber \\
+                 & = \int_0^R r\phi_r\psi_r + \frac{N^2}{r}\phi\psi + r\lambda\left(6\phi^5 - 4a\phi^3 + 2b\phi\right)\psi\dd{r} \nonumber                                                                                      \\
                  & = \int_0^R\left[-\left(r\phi_r\right)_r + \frac{N^2}{r}\phi + r\lambda\left(6\phi^5 - 4a\phi^3 + 2b\phi\right)\right]\psi\dd{r}
     \end{align}
     Where, in moving from the second to last, to last line we have integrated by
     parts on the first term and used the fact that \(\phi\) and \(\psi\) vanish
     on the boundary.
     \begin{align}
-        \delta J & = \left.\dv{\varepsilon}J[\phi + \varepsilon\psi]\right|_{\varepsilon = 0} \nonumber \\
+        \delta J & = \left.\dv{\varepsilon}J[\phi + \varepsilon\psi]\right|_{\varepsilon = 0} \nonumber  \\
                  & = \dv{\varepsilon}2\pi\int_0^R r\left(\phi + \varepsilon\psi\right)^2\dd{r} \nonumber \\
                  & = 4\pi\int_0^R r\phi\psi\dd{r}
     \end{align}
@@ -410,9 +410,9 @@ aid in the proof.
     non-negative we have \(\left(\phi^2 - \frac{a}{2}\right)^2\geq 0\). And now,
     some manipulations.
     \begin{align*}
-         \left(\phi^2 - \frac{a}{2}\right)^2 & \geq 0 \\
-        \phi^4 - a\phi^2 + \frac{a^2}{4} + b & \geq b \\
-                  \phi^6 - a\phi^4 + b\phi^2 & \geq \phi^2\left(b - \frac{a^2}{4}\right)
+        \left(\phi^2 - \frac{a}{2}\right)^2  & \geq 0                                    \\
+        \phi^4 - a\phi^2 + \frac{a^2}{4} + b & \geq b                                    \\
+        \phi^6 - a\phi^4 + b\phi^2           & \geq \phi^2\left(b - \frac{a^2}{4}\right)
     \end{align*}
 \end{proof}
 \begin{lemma}\label{lem:ineq2}
@@ -426,7 +426,7 @@ aid in the proof.
     \(r^2\leq R^2\). Multiplying by \(\phi^2\) changes nothing, and we then
     divide both sides by \(r\) to give \(r\phi^2\leq R^2\frac{\phi^2}{r}\). By
     monotonicity\footnote{Monotonicity meaning if \(f\leq g\), then
-    \(\int f\leq \int g\).} of the integral from \(0\) to \(R\) we have
+        \(\int f\leq \int g\).} of the integral from \(0\) to \(R\) we have
     \begin{equation}
         \int_0^R r\phi^2\dd{r}\leq R^2\int_0^R\frac{\phi^2}{r}\dd{r}
     \end{equation}
